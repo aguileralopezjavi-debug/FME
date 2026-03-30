@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FME Group — Setas y Champiñones Directos del Productor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --white:#FFFFFF;--off:#F6F7F5;--border:#E0E3DC;--mid:#8A9087;
+      --dark:#1B2B45;--dark2:#0F1A2A;--text:#1B2B45;--sub:#4A5568;
+      --green:#5E9E28;--gm:#7AB648;--glt:#C8E8A0;--gxlt:#EEF7E2;
+      --drawer:#F2F4F0;
+      --head:'Montserrat',sans-serif;--body:'Inter',sans-serif;
+      --r:6px;--sm:0 1px 4px rgba(27,43,69,.07);--md:0 4px 24px rgba(27,43,69,.13);
+      --t:.22s cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--white);color:var(--text);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1160px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+    section{padding:clamp(2.5rem,4vw,4rem) 0}
+    .badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--gxlt);border:1px solid var(--glt);color:var(--green);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .85rem;border-radius:100px;margin-bottom:1.25rem}
+    .badge .dot{width:6px;height:6px;background:var(--gm);border-radius:50%}
+    .btn-g{display:inline-flex;align-items:center;gap:.55rem;background:var(--green);color:var(--white);font-family:var(--body);font-size:.95rem;font-weight:700;padding:.85rem 2rem;border-radius:var(--r);border:none;cursor:pointer;transition:var(--t)}
+    .btn-g:hover{background:var(--gm);transform:translateY(-2px);box-shadow:0 8px 28px rgba(94,158,40,.35)}
+    .btn-w{display:inline-flex;align-items:center;gap:.5rem;background:var(--white);color:var(--dark);font-weight:700;font-family:var(--body);font-size:.9rem;padding:.8rem 1.75rem;border-radius:var(--r);border:none;cursor:pointer;transition:var(--t)}
+    .btn-w:hover{background:var(--gxlt);color:var(--green)}
+
+    /* BACK TO TOP */
+    .back-top{position:fixed;top:50%;left:1rem;transform:translateY(-50%);z-index:400;display:flex;align-items:center;gap:.4rem;background:var(--dark);color:var(--white);font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.5rem .85rem;border-radius:100px;border:1px solid rgba(255,255,255,.12);cursor:pointer;box-shadow:0 4px 16px rgba(15,26,42,.35);transition:var(--t);white-space:nowrap;text-decoration:none}
+    .back-top:hover{background:var(--green);border-color:var(--green);transform:translateY(-50%) scale(1.04)}
+    .back-top svg{flex-shrink:0}
+    @media(max-width:768px){.back-top{left:.5rem;padding:.4rem .6rem}.back-top .bt-label{display:none}}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:.75rem}
+    .nav-brands{display:flex;align-items:center;gap:.75rem}
+    .sep{width:1px;height:26px;background:var(--border)}
+    .nl-fme{height:42px;width:auto;object-fit:contain}
+    .nl-dmp{height:30px;width:auto;object-fit:contain}
+    .nl-ch{height:27px;width:auto;object-fit:contain}
+    .nav-r{display:flex;align-items:center;gap:.65rem;flex-shrink:0}
+    .certs{display:flex;align-items:center;gap:.35rem}
+    .cert-logo{height:28px;width:auto;object-fit:contain;border-radius:3px}
+    .btn-nav-qs{display:inline-flex;align-items:center;gap:.35rem;background:var(--off);border:1px solid var(--border);color:var(--sub);font-family:var(--body);font-size:.75rem;font-weight:600;padding:.28rem .8rem;border-radius:var(--r);cursor:pointer;transition:var(--t);white-space:nowrap;text-decoration:none}
+    .btn-nav-qs:hover{background:var(--gxlt);border-color:var(--green);color:var(--green)}
+    .lang-sw{display:flex;align-items:center;gap:2px;background:var(--off);border:1px solid var(--border);border-radius:var(--r);padding:3px}
+    .lb{background:none;border:none;cursor:pointer;font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);padding:.22rem .46rem;border-radius:4px;transition:var(--t);line-height:1}
+    .lb:hover{color:var(--green)}
+    .lb.active{background:var(--white);color:var(--green);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+
+    /* HERO */
+    .hero{background:var(--off);border-bottom:1px solid var(--border);padding:1.5rem 0 1.25rem;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,3vw,3.5rem);align-items:center}
+    .hero h1{font-family:var(--head);font-size:clamp(1.45rem,2.4vw,2.2rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--dark);margin-bottom:.75rem}
+    .hero h1 em{font-style:normal;color:var(--green);display:block;margin-top:.1rem}
+    .hero-sub{font-size:.88rem;color:var(--sub);line-height:1.65;max-width:460px;margin-bottom:1.25rem}
+    .hero-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+    .hero-visual{display:flex;flex-direction:column;gap:.4rem}
+    .hero-img-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--md)}
+    .hero-img-wrap img{width:100%;height:230px;object-fit:cover;object-position:center center;display:block;transition:opacity .35s ease}
+    .hero-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+    .thumb{border-radius:5px;overflow:hidden;border:2px solid transparent;cursor:pointer;position:relative;transition:var(--t)}
+    .thumb img{width:100%;height:62px;object-fit:cover;display:block;transition:transform .3s ease}
+    .thumb:hover{border-color:var(--gm);transform:translateY(-2px)}
+    .thumb:hover img{transform:scale(1.06)}
+    .thumb.active{border-color:var(--green);box-shadow:0 0 0 2px rgba(94,158,40,.3)}
+    .thumb-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,26,42,.85));color:#fff;font-size:.57rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.45rem .35rem .18rem;text-align:center}
+
+    /* STATS */
+    .stats-wrap{width:100vw;margin-left:calc(-50vw + 50%);background:var(--dark);padding:1.25rem 0}
+    .stats-inner{max-width:1160px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+    .stats-eyebrow{text-align:center;font-size:.64rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.36);margin-bottom:.9rem}
+    .stats-row{display:flex;justify-content:space-around;flex-wrap:wrap;gap:.75rem}
+    .stat{display:flex;flex-direction:column;align-items:center;text-align:center}
+    .stat strong{font-family:var(--head);font-size:1.9rem;font-weight:900;color:var(--gm);line-height:1}
+    .stat span{font-size:.66rem;color:rgba(255,255,255,.5);letter-spacing:.05em;text-transform:uppercase;margin-top:.25rem;max-width:110px}
+    .stat-sep{width:1px;background:rgba(255,255,255,.1);align-self:stretch}
+
+    /* TABS — folder system */
+    .tabs-section{background:var(--white);padding:clamp(2rem,4vw,4rem) 0 clamp(2.5rem,5vw,5rem)}
+    .tabs-header{text-align:center;margin-bottom:1.75rem}
+    .tabs-header h2{font-family:var(--head);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;letter-spacing:-.02em;color:var(--dark);margin-bottom:.4rem}
+    .tabs-header p{color:var(--sub);font-size:.93rem}
+
+    /* FOLDER TABS — stick directly above content panel */
+    .tab-btns{
+      display:flex;gap:0;justify-content:flex-start;
+      margin-bottom:0;padding:0 0 0 0;
+      position:relative;z-index:2;
+    }
+    .tab-btn{
+      display:flex;align-items:center;gap:.6rem;
+      font-family:var(--body);font-size:.95rem;font-weight:700;
+      padding:.8rem 2rem;
+      border-radius:10px 10px 0 0;
+      cursor:pointer;
+      border:1.5px solid var(--border);
+      border-bottom:none;
+      background:#E8EBE5;
+      color:var(--mid);
+      transition:all .2s ease;
+      min-width:220px;
+      justify-content:center;
+      opacity:1;
+      position:relative;
+      top:2px; /* overlap panel border */
+    }
+    .tab-btn + .tab-btn{margin-left:4px}
+    .tab-btn .te{font-size:1.3rem}
+    .tab-btn:hover{background:#F0F3ED;color:var(--dark)}
+    .tab-btn.active{
+      background:var(--white) !important;
+      border-color:var(--border) !important;
+      border-bottom:2px solid var(--white) !important;
+      color:var(--dark) !important;
+      box-shadow:0 -3px 10px rgba(27,43,69,.07);
+      z-index:3;
+    }
+    .tab-btn.active .tlm{color:var(--green)}
+    .tab-btn.active .tls{color:var(--green) !important;opacity:.8}
+    .tl{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem}
+    .tlm{font-size:.97rem;font-weight:800;letter-spacing:-.01em}
+    .tls{font-size:.67rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);transition:var(--t)}
+
+    /* Content panel wrapper — the "open folder" surface */
+    .tab-panels-wrap{
+      border:1.5px solid var(--border);
+      border-radius:0 12px 12px 12px;
+      background:var(--white);
+      padding:2.25rem clamp(1.25rem,3vw,2.5rem) 2.5rem;
+      position:relative;z-index:1;
+    }
+
+    /* TAB PANELS — total isolation + animated reveal */
+    .tab-panel{display:none}
+    .tab-panel.active{display:block;animation:panelReveal .4s cubic-bezier(.4,0,.2,1) forwards}
+    @keyframes panelReveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    /* SECTION CONFIRMATION HEADER */
+    .section-confirm{
+      text-align:center;
+      padding:2.5rem 2rem 2rem;
+      margin-bottom:2.5rem;
+      background:linear-gradient(135deg, var(--gxlt) 0%, #fff 60%);
+      border:1px solid var(--glt);
+      border-radius:14px;
+    }
+    .section-confirm .sc-icon{font-size:2.5rem;display:block;margin-bottom:.65rem}
+    .section-confirm h2{
+      font-family:var(--head);
+      font-size:clamp(1.65rem,3vw,2.6rem);
+      font-weight:900;letter-spacing:-.025em;
+      color:var(--dark);line-height:1.1;
+    }
+    .section-confirm h2 em{font-style:normal;color:var(--green)}
+    .section-confirm p{color:var(--sub);font-size:.97rem;max-width:580px;margin:.65rem auto 0;line-height:1.68}
+
+    /* ── SOLUTION CARDS (Retail + FS) ─────────────────────────────
+       Card has image header + H4 title + short blurb
+       Click opens a "drawer" below that spans full grid width  */
+
+    /* Retail 5-card grid: all equal width */
+    .solution-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:1rem;
+      margin-bottom:2rem;
+    }
+
+    /* Base solution card */
+    .sol-card{
+      background:var(--white);
+      border:1.5px solid var(--border);
+      border-top:4px solid var(--green);
+      border-radius:0 0 10px 10px;
+      overflow:hidden;
+      cursor:pointer;
+      transition:var(--t);
+      display:flex;flex-direction:column;
+      position:relative;
+    }
+    .sol-card:hover{box-shadow:0 10px 36px rgba(27,43,69,.14);transform:translateY(-5px)}
+    .sol-card.open{border-bottom-left-radius:0;border-bottom-right-radius:0;box-shadow:none;transform:none}
+
+    /* Per-card accent colors — top border */
+    .sol-card.c1{border-top-color:#5E9E28}   /* DROPS — FME green */
+    .sol-card.c2{border-top-color:#1B4E8A}   /* Commodities — navy blue */
+    .sol-card.c3{border-top-color:#2E7D6A}   /* Especialidades — dark teal */
+    .sol-card.c4{border-top-color:#7A5C00}   /* IN/OUT — dark amber/olive */
+    .sol-card.c5{border-top-color:#546878}   /* VMI — slate */
+
+    /* Soft tint on card-body for each accent */
+    .sol-card.c1 .card-body{background:#FAFEFA}
+    .sol-card.c2 .card-body{background:#F5F8FC}
+    .sol-card.c3 .card-body{background:#F4FAF8}
+    .sol-card.c4 .card-body{background:#FAF7F0}
+    .sol-card.c5 .card-body{background:#F6F8FA}
+
+    .sol-card.c1 .card-kicker{color:#5E9E28}
+    .sol-card.c2 .card-kicker{color:#1B4E8A}
+    .sol-card.c3 .card-kicker{color:#2E7D6A}
+    .sol-card.c4 .card-kicker{color:#7A5C00}
+    .sol-card.c5 .card-kicker{color:#546878}
+
+    .sol-card.c1 .card-cta{color:#5E9E28}
+    .sol-card.c2 .card-cta{color:#1B4E8A}
+    .sol-card.c3 .card-cta{color:#2E7D6A}
+    .sol-card.c4 .card-cta{color:#7A5C00}
+    .sol-card.c5 .card-cta{color:#546878}
+
+    /* FS 4-card grid */
+    .fs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+
+    .sol-card.f1{border-top-color:#2E7D6A}
+    .sol-card.f2{border-top-color:#1B4E8A}
+    .sol-card.f3{border-top-color:#5E9E28}
+    .sol-card.f4{border-top-color:#546878}
+
+    .sol-card.f1 .card-body{background:#F4FAF8}
+    .sol-card.f2 .card-body{background:#F5F8FC}
+    .sol-card.f3 .card-body{background:#FAFEFA}
+    .sol-card.f4 .card-body{background:#F6F8FA}
+
+    .sol-card.f1 .card-kicker{color:#2E7D6A}
+    .sol-card.f2 .card-kicker{color:#1B4E8A}
+    .sol-card.f3 .card-kicker{color:#5E9E28}
+    .sol-card.f4 .card-kicker{color:#546878}
+
+    .sol-card.f1 .card-cta{color:#2E7D6A}
+    .sol-card.f2 .card-cta{color:#1B4E8A}
+    .sol-card.f3 .card-cta{color:#5E9E28}
+    .sol-card.f4 .card-cta{color:#546878}
+
+    /* Removed: .sol-card.drops and .sol-card.vmi special overrides */
+
+    /* Card image header */
+    .card-img-wrap{width:100%;overflow:hidden;flex-shrink:0}
+    .card-img-wrap img{width:100%;height:100px;object-fit:cover;display:block;transition:transform .4s ease}
+    .sol-card:hover .card-img-wrap img{transform:scale(1.06)}
+
+    /* Card body */
+    .card-body{padding:1.35rem 1.25rem;display:flex;flex-direction:column;gap:.55rem;flex:1}
+    .card-kicker{font-size:.7rem;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase}
+    .card-vmi-tag{display:inline-flex;align-items:center;gap:.3rem;background:#E8EDE5;color:#546878;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .55rem;border-radius:100px;align-self:flex-start}
+    .sol-card h4{font-family:var(--head);font-size:1rem;font-weight:800;color:var(--dark);letter-spacing:-.01em;line-height:1.25}
+    .card-blurb{font-size:.84rem;color:var(--sub);line-height:1.6;flex:1}
+    .card-cta{display:flex;align-items:center;gap:.35rem;font-size:.78rem;font-weight:700;color:var(--green);margin-top:.35rem;transition:gap var(--t)}
+    .sol-card:hover .card-cta{gap:.65rem}
+    .card-new{display:inline-flex;align-items:center;gap:.3rem;background:var(--green);color:var(--white);font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border-radius:100px;align-self:flex-start;margin-bottom:.1rem}
+
+    /* ── DRAWER (expandable content below card) ─── */
+    .drawer{
+      display:none;
+      grid-column:1/-1;
+      background:var(--drawer);
+      border:1.5px solid var(--green);
+      border-top:none;
+      border-radius:0 0 12px 12px;
+      overflow:hidden;
+      animation:drawerOpen .3s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    .drawer.open{display:block}
+    @keyframes drawerOpen{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+    .drawer-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:0}
+    .drawer-img{flex-shrink:0;overflow:hidden}
+    .drawer-img img{width:100%;height:100%;min-height:200px;object-fit:cover;display:block}
+    .drawer-content{padding:2rem 1.75rem 1.75rem 2rem}
+    .drawer-close{
+      float:right;background:none;border:none;cursor:pointer;
+      color:var(--mid);font-size:1.1rem;padding:.2rem .4rem;
+      border-radius:3px;transition:var(--t);line-height:1;margin-left:.5rem;margin-bottom:.25rem;
+    }
+    .drawer-close:hover{color:var(--dark);background:var(--border)}
+    .drawer-content h3{
+      font-family:var(--head);
+      font-size:clamp(1.2rem,2vw,1.65rem);
+      font-weight:900;
+      color:var(--green);
+      letter-spacing:-.02em;
+      line-height:1.15;
+      margin-bottom:1rem;
+    }
+    .drawer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:1.1rem}
+    .drawer-col{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1rem}
+    .drawer-col .dc-label{font-size:.66rem;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+    .drawer-col p{font-size:.82rem;color:var(--sub);line-height:1.58}
+    .drawer-cta{display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:var(--white);font-family:var(--body);font-size:.85rem;font-weight:700;padding:.65rem 1.4rem;border-radius:var(--r);border:none;cursor:pointer;transition:var(--t)}
+    .drawer-cta:hover{background:var(--gm)}
+
+    /* FS grid 2x2 */
+    
+
+    /* FS CTA block */
+    .fs-cta-block{background:var(--dark);border-radius:12px;padding:2rem clamp(1.5rem,3vw,2.5rem);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+    .fs-cta-block h4{font-family:var(--head);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.3rem}
+    .fs-cta-block p{font-size:.85rem;color:#8A9087}
+    .btn-call{display:inline-flex;align-items:center;gap:.55rem;background:var(--green);color:var(--white);font-family:var(--body);font-size:1rem;font-weight:700;padding:1rem 2.25rem;border-radius:var(--r);border:none;cursor:pointer;transition:var(--t)}
+    .btn-call:hover{background:var(--gm);transform:translateY(-2px);box-shadow:0 8px 28px rgba(94,158,40,.4)}
+
+
+    /* TRUST LOGOS SECTION */
+    .section-trust{background:var(--white);padding:2.25rem 0;border-top:none;border-bottom:1px solid var(--border)}
+    .trust-eyebrow{
+      text-align:center;
+      font-size:.72rem;font-weight:800;letter-spacing:.22em;
+      text-transform:uppercase;color:var(--mid);
+      margin-bottom:1.75rem;
+      display:flex;align-items:center;gap:1rem;justify-content:center;
+    }
+    .trust-eyebrow::before,.trust-eyebrow::after{
+      content:'';flex:1;max-width:120px;height:1px;background:var(--border);
+    }
+    .trust-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:.75rem 1.5rem;align-items:center;justify-items:center}
+    .trust-logo{
+      display:flex;align-items:center;justify-content:center;
+      height:52px;width:100%;
+      filter:grayscale(1) opacity(.55);
+      transition:filter var(--t),transform var(--t);
+    }
+    .trust-logo:hover{filter:grayscale(.2) opacity(.85);transform:scale(1.06)}
+    .trust-logo img{max-width:130px;max-height:52px;width:auto;height:auto;object-fit:contain;display:block}
+    .trust-logo .tl-name{
+      font-family:var(--head);font-size:clamp(.8rem,1.2vw,1rem);font-weight:800;
+      color:#8A9490;letter-spacing:-.01em;white-space:nowrap;
+    }
+    @media(max-width:1024px){.trust-grid{grid-template-columns:repeat(4,1fr);row-gap:1.25rem}}
+    @media(max-width:640px){.trust-grid{grid-template-columns:repeat(2,1fr);row-gap:1.25rem}}
+
+    /* QUIÉNES SOMOS */
+    .qs-section{background:var(--off);padding:clamp(3rem,5vw,5.5rem) 0}
+    .qs-header{text-align:center;margin-bottom:3rem}
+    .qs-badge{
+      display:inline-block;
+      background:var(--gxlt);
+      color:var(--green);
+      border:1.5px solid var(--glt);
+      font-size:.72rem;font-weight:800;
+      letter-spacing:.18em;text-transform:uppercase;
+      padding:.35rem 1.1rem;border-radius:100px;
+      margin-bottom:1.1rem;
+    }
+    .qs-header h2{font-family:var(--head);font-size:clamp(1.7rem,2.8vw,2.5rem);font-weight:900;letter-spacing:-.025em;color:var(--dark);margin-bottom:.65rem;line-height:1.1}
+    .qs-header h2 em{font-style:normal;color:var(--green)}
+    .qs-header p{font-size:1rem;color:var(--sub);max-width:640px;margin:0 auto;line-height:1.72}
+    .qs-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;margin-bottom:3rem}
+    .qs-pillar{background:#ffffff;border:none;border-top:4px solid var(--green);border-radius:8px;padding:2.5rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.25rem;transition:var(--t);position:relative;box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+    .qs-pillar:hover{box-shadow:0 8px 30px rgba(0,0,0,0.12);transform:translateY(-4px)}
+    .pillar-icon{width:64px;height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:.5rem}
+    .pillar-icon svg{width:64px;height:64px}
+    .qs-pillar h4{font-family:var(--head);font-size:1.3rem;font-weight:900;color:var(--dark);letter-spacing:-.01em;text-align:center}
+    .qs-pillar p{font-size:.9rem;color:var(--sub);line-height:1.7;max-width:100%;text-align:center}
+    .qs-group-block{background:var(--dark);border-radius:12px;padding:clamp(1.75rem,3vw,2.5rem);display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-bottom:2rem}
+    .qg-text h3{font-family:var(--head);font-size:1.35rem;font-weight:900;color:var(--white);margin-bottom:.65rem}
+    .qg-text p{font-size:.88rem;color:rgba(255,255,255,.6);line-height:1.72}
+    .qg-stats{display:flex;flex-direction:column;gap:.7rem}
+    .qg-stat{display:flex;align-items:center;gap:.9rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.75rem .9rem}
+    .qg-val{font-family:var(--head);font-size:1.45rem;font-weight:900;color:var(--gm);line-height:1;min-width:52px}
+    .qg-label{font-size:.78rem;color:rgba(255,255,255,.56)}
+    .prod-photos{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:1.65rem}
+    .prod-photo{border-radius:8px;overflow:hidden;border:1px solid var(--border);position:relative}
+    .prod-photo img{width:100%;height:220px;object-fit:cover;display:block}
+    .prod-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(15,26,42,.88));color:#fff;padding:1.1rem .9rem .65rem;font-size:.73rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+    .cert-strip{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap}
+    .cs-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+    .cs-logo{height:38px;width:auto;object-fit:contain;border-radius:4px}
+    hr.divider{border:none;border-top:1px solid var(--border);margin:0}
+
+    /* FOOTER */
+    footer{background:var(--dark2);color:var(--white);padding:clamp(2.5rem,4vw,3.5rem) 0 0}
+    .fg{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2.25rem}
+    .fl-logo{height:44px;width:auto;background:white;border-radius:6px;padding:5px 9px;object-fit:contain;margin-bottom:.8rem}
+    .footer-brand p{font-size:.83rem;color:#6B7A6A;line-height:1.7;max-width:260px}
+    .fc h5{font-family:var(--head);font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#546878;margin-bottom:1rem}
+    .fc ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .fc ul li a{font-size:.83rem;color:#8A9087;transition:color var(--t)}
+    .fc ul li a:hover{color:var(--white)}
+    .ff{display:flex;flex-direction:column;gap:.55rem}
+    .ff input,.ff textarea{background:#1A2538;border:1px solid #2A3A50;border-radius:var(--r);color:var(--white);font-family:var(--body);font-size:.83rem;padding:.6rem .85rem;outline:none;width:100%;transition:border-color var(--t)}
+    .ff input::placeholder,.ff textarea::placeholder{color:#3A4A60}
+    .ff input:focus,.ff textarea:focus{border-color:var(--gm)}
+    .ff textarea{resize:vertical;min-height:68px}
+    .ff-row{display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+    .ff-submit{background:var(--green);color:var(--white);font-size:.85rem;padding:.7rem;width:100%;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;border-radius:var(--r);transition:var(--t)}
+    .ff-submit:hover{background:var(--gm)}
+    .fb{border-top:1px solid #243450;padding:1.1rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem}
+    .fb p{font-size:.72rem;color:#3A4A60}
+    .fb-logo{height:26px;background:white;border-radius:4px;padding:2px 6px;object-fit:contain}
+
+    /* RESPONSIVE */
+    }
+    @media(max-width:1100px){
+      .solution-grid{grid-template-columns:repeat(3,1fr)}
+      .fs-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:960px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-visual{order:-1}
+      .hero-img-wrap img{height:200px}
+      .tab-btns{flex-wrap:wrap}
+      .tab-btn{min-width:180px;padding:.75rem 1.25rem}
+      .solution-grid{grid-template-columns:repeat(2,1fr)}
+      .qs-pillars{grid-template-columns:1fr 1fr;gap:1.25rem}
+      .qs-group-block{grid-template-columns:1fr;gap:1.5rem}
+      .prod-photos{grid-template-columns:1fr}
+      .fg{grid-template-columns:1fr;gap:1.75rem}
+      .stat-sep{display:none}
+      .nl-dmp,.nl-ch,.sep{display:none}
+      .btn-nav-qs span{display:none}
+      .drawer-inner{grid-template-columns:1fr}
+      .drawer-img{display:none}
+      .drawer-cols{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .stats-row{flex-direction:column;align-items:center}
+      .solution-grid{grid-template-columns:1fr}
+      .fs-grid{grid-template-columns:1fr}
+      .qs-pillars{grid-template-columns:1fr}
+      .ff-row{grid-template-columns:1fr}
+      .lb{padding:.2rem .38rem;font-size:.68rem}
+      .certs{display:none}
+      .tab-panels-wrap{border-radius:0 0 12px 12px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- BACK TO TOP -->
+<a href="#inicio" class="back-top">
+  <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 12V4M4 8l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span class="bt-label" data-i18n="nav.back">Inicio</span>
+</a>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <div class="nav-brands">
+      <img src="https://placehold.co/140x42/1B2B45/FFFFFF?text=FME+Group&font=montserrat" alt="FME Group" class="nl-fme"/>
+      <div class="sep"></div>
+      <img src="https://placehold.co/100x30/5E9E28/FFFFFF?text=DMP&font=montserrat" alt="DMP" class="nl-dmp"/>
+      <div class="sep"></div>
+      <img src="https://placehold.co/100x27/1B4E8A/FFFFFF?text=Champur&font=montserrat" alt="Champur" class="nl-ch"/>
+    </div>
+    <div class="nav-r">
+      <div class="certs">
+        <img src="https://placehold.co/80x28/E8F5E9/2E7D32?text=IFS&font=montserrat" alt="IFS" class="cert-logo"/>
+        <img src="https://placehold.co/80x28/E3F2FD/1565C0?text=BRC&font=montserrat" alt="BRC" class="cert-logo"/>
+        <img src="https://placehold.co/80x28/FFF8E1/E65100?text=GlobalGAP&font=montserrat" alt="GAP" class="cert-logo"/>
+      </div>
+      <a href="#nosotros" class="btn-nav-qs">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 14c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span data-i18n="nav.qs">Quiénes somos</span>
+      </a>
+      <div class="lang-sw" role="group">
+        <button class="lb active" onclick="setLang('es')">ES</button>
+        <button class="lb" onclick="setLang('en')">EN</button>
+        <button class="lb" onclick="setLang('nl')">NL</button>
+        <button class="lb" onclick="setLang('fr')">FR</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="badge"><span class="dot"></span><span data-i18n="hero.badge">Productores directos · Sin intermediarios</span></div>
+        <h1><span data-i18n="hero.h1a">Setas y Champiñones Directos del Productor.</span><em data-i18n="hero.h1b">Cero Intermediarios. Cero Roturas.</em></h1>
+        <p class="hero-sub" data-i18n="hero.sub">Protegemos tu margen y garantizamos tu suministro. Desde nuestros cultivos e importación directa, hasta tu plataforma logística.</p>
+        <div class="hero-actions">
+          <button class="btn-g" onclick="document.getElementById('tabs').scrollIntoView({behavior:'smooth'})">
+            <span data-i18n="hero.cta">Retail o Foodservice</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3l5 5-5 5M3 8h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img-wrap">
+          <img id="hero-main-img" src="https://images.unsplash.com/photo-1601598862983-e03b3c3e2e49?w=800&q=80&fit=crop" alt="FME — Setas gourmet premium"/>
+        </div>
+        <div class="hero-thumbs">
+          <div class="thumb" onclick="swapHero(this,'https://images.unsplash.com/photo-1591382386627-349b692688ff?w=800&q=80&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1591382386627-349b692688ff?w=800&q=80&fit=crop" alt="Hub NL"/>
+            <div class="thumb-cap" data-i18n="strip.nl">Hub NL</div>
+          </div>
+          <div class="thumb" onclick="swapHero(this,'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&fit=crop" alt="DMP España"/>
+            <div class="thumb-cap" data-i18n="strip.es">DMP — ES</div>
+          </div>
+          <div class="thumb" onclick="swapHero(this,'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80&fit=crop')">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80&fit=crop" alt="Champur FR"/>
+            <div class="thumb-cap" data-i18n="strip.fr">Champur — FR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-wrap">
+  <div class="stats-inner">
+    <div class="stats-eyebrow" data-i18n="stats.eyebrow">NUESTRO MÚSCULO EN DATOS CLAVE</div>
+    <div class="stats-row">
+      <div class="stat"><strong>+60M€</strong><span data-i18n="stats.t">Facturación 2025</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>3</strong><span data-i18n="stats.l">Centrales Logísticas Europeas</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>365</strong><span data-i18n="stats.s">Días de Suministro Garantizado</span></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><strong>100%</strong><span data-i18n="stats.c">Certificados IFS, BRC &amp; GlobalGap</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST LOGOS — moved below stats band -->
+<section class="section-trust">
+  <div class="wrap">
+    <div class="trust-eyebrow" data-i18n="trust.title">Homologados en Grandes Cuentas Europeas</div>
+    <div class="trust-grid">
+      <div class="trust-logo"><img src="https://logo.clearbit.com/mercadona.es" alt="Mercadona"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/carrefour.com" alt="Carrefour"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/elcorteingles.es" alt="El Corte Inglés"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/metro.de" alt="METRO"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/colruyt.be" alt="Colruyt"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/sligro.nl" alt="Sligro"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/hellofresh.com" alt="HelloFresh"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/aldi.com" alt="ALDI"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/consum.es" alt="Consum"/></div>
+      <div class="trust-logo"><img src="https://logo.clearbit.com/greenyard.group" alt="Greenyard"/></div>
+      <div class="trust-logo"><img src="https://placehold.co/120x40/F0F4F0/5E9E28?text=Bama&font=montserrat" alt="Bama"/></div>
+      <div class="trust-logo"><img src="https://placehold.co/120x40/F0F4F0/1B4E8A?text=Rungis&font=montserrat" alt="Rungis"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS -->
+<section class="tabs-section" id="tabs">
+  <div class="wrap">
+    <div class="tabs-header">
+      <h2 data-i18n="gate.h2">¿Para qué canal compras?</h2>
+      <p data-i18n="gate.sub">Selecciona tu perfil. El contenido cambiará por completo.</p>
+    </div>
+    <div class="tab-btns">
+      <button class="tab-btn active" id="tab-btn-retail" onclick="switchTab('retail',this)">
+        <span class="te">🛒</span>
+        <div class="tl"><span class="tlm" data-i18n="tab.r.main">Soy RETAIL</span><span class="tls" data-i18n="tab.r.sub">Jefe / Director de Compras</span></div>
+      </button>
+      <button class="tab-btn" id="tab-btn-fs" onclick="switchTab('foodservice',this)">
+        <span class="te">👨‍🍳</span>
+        <div class="tl"><span class="tlm" data-i18n="tab.f.main">Soy FOODSERVICE</span><span class="tls" data-i18n="tab.f.sub">Director Compras / Chef Ejecutivo</span></div>
+      </button>
+    </div>
+    <div class="tab-panels-wrap">
+
+    <!-- ════════════════════════════════════════
+         RETAIL PANEL
+    ════════════════════════════════════════ -->
+    <div class="tab-panel active" id="panel-retail">
+      <div id="retail-top"></div>
+
+      <!-- Big confirmation header -->
+      <div class="section-confirm">
+        <span class="sc-icon">🛒</span>
+        <h2><em data-i18n="pc.retail.em">Soluciones Estratégicas</em> <span data-i18n="pc.retail.rest">para RETAIL</span></h2>
+        <p data-i18n="pc.retail.p">5 líneas de negocio diseñadas para atrapar al consumidor actual, subir el ticket medio y blindar tu rentabilidad de categoría.</p>
+      </div>
+
+      <!-- 5-card grid -->
+      <div class="solution-grid" id="retail-grid">
+
+        <!-- 1 · DROPS -->
+        <div class="sol-card c1" onclick="toggleDrawer('drawer-drops', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80&fit=crop" alt="DROPS Bolettus 6 SKUs" style="width:100%;height:120px;object-fit:cover;object-position:center 30%;display:block"/>
+          </div>
+          <div class="card-body">
+            <div>
+              <div class="card-new">★ <span data-i18n="r.new">NUEVO</span></div>
+              <div class="card-kicker" data-i18n="r1.k">Proyecto DROPS · IV Gama</div>
+              <h4 data-i18n="r1.h">Dinamita para tu lineal de frío</h4>
+            </div>
+            <div class="card-blurb" data-i18n="r1.b">Bandejas refrigeradas con mezclas premium. Máximo margen, máximo impulso.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- 2 · Commodities -->
+        <div class="sol-card c2" onclick="toggleDrawer('drawer-comm', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&fit=crop" alt="Commodities"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="r2.k">Commodities · Alta Rotación</div>
+            <h4 data-i18n="r2.h">El motor de tu categoría</h4>
+            <div class="card-blurb" data-i18n="r2.b">Suministro masivo blindado los 365 días. Sin depender de terceros.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- 3 · Especialidades -->
+        <div class="sol-card c3" onclick="toggleDrawer('drawer-espec', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800&q=80&fit=crop" alt="Especialidades Laminadas"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="r3.k">Especialidades Laminadas</div>
+            <h4 data-i18n="r3.h">Listo para la sartén</h4>
+            <div class="card-blurb" data-i18n="r3.b">Producto limpio y cortado que aumenta el valor de la cesta.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- 4 · IN/OUT -->
+        <div class="sol-card c4" onclick="toggleDrawer('drawer-inout', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80&fit=crop" alt="IN/OUT Silvestres"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="r4.k">IN/OUT · Silvestres</div>
+            <h4 data-i18n="r4.h">Tráfico e impulso en fechas clave</h4>
+            <div class="card-blurb" data-i18n="r4.b">Exóticos estacionales de alto margen para Navidad y Otoño.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- 5 · VMI -->
+        <div class="sol-card c5" onclick="toggleDrawer('drawer-vmi', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&fit=crop" alt="Sistema VMI"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="r5.k">Gestión Logística VMI</div>
+            <h4 data-i18n="r5.h">Nos conectamos. Tú solo vendes.</h4>
+            <div class="card-blurb" data-i18n="r5.b">Mermas asumidas, reposición autónoma. Riesgo logístico a cero.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- DRAWERS -->
+        <div class="drawer" id="drawer-drops">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80&fit=crop" alt="DROPS Bolettus 6 Maneras" style="width:100%;height:100%;min-height:200px;object-fit:cover;object-position:center 25%;display:block"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-drops',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="d_drops.h">Innovación IV Gama: Proyecto DROPS</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="d_drops.w">Plataforma de conveniencia refrigerada: 2 referencias permanentes + 6 lanzamientos bimensuales que crean urgencia de compra y elevan el ticket.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="d_drops.f">Retailers que quieren diferenciar su lineal de IV Gama y generar tráfico con novedades que el consumidor no encuentra en la competencia.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="d_drops.r">Margen bruto por encima de la media de categoría. Dinamita para tu lineal de frío. Sube ticket medio y atrapa consumidor sin tiempo.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-comm">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80&fit=crop" alt="Palets FME listos"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-comm',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="d_comm.h">Volumen Blindado: Commodities de Rotación</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="d_comm.w">Champiñón blanco y Portobello en bandejas 250g, 500g y granel. Producción propia en La Rioja y Lleida + importación directa.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="d_comm.f">Cualquier retailer que necesite garantía de suministro sin interrupciones todo el año, con precio estable y logística integrada.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="d_comm.r">Motor de tu categoría. Suministro masivo blindado los 365 días. Cero roturas. Precio cerrado por temporada.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-espec">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop" alt="Champiñón laminado en sartén"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-espec',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="d_espec.h">Eficiencia para el Cliente: Especialidades Laminadas</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="d_espec.w">Setas limpias, cortadas y calibradas. Laminado 3mm, tiras salteado, troceado coarse y entero calibrado. 100% rendimiento.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="d_espec.f">Retailers que quieren subir el precio medio de su categoría respondiendo a la demanda de conveniencia del consumidor actual.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="d_espec.r">Respuesta al "no tengo tiempo". Sube valor cesta. Precio por ración superior al producto entero. Mayor ticket medio.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-inout">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800&q=80&fit=crop" alt="Caja mix exótico otoño navidad"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-inout',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="d_inout.h">Dinamismo en el Lineal: IN/OUT y Silvestres</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="d_inout.w">Seta de Cardo, Níscalo, Trompeta Negra, mezclas otoñales, surtidos navideños. Disponibilidad puntual y controlada por campaña.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="d_inout.f">Retailers que quieren activar campañas estacionales y captar al consumidor más exigente y dispuesto a pagar más.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="d_inout.r">Rompe monotonía. Campañas estacionales de alto margen. Tráfico incremental y compra por impulso.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-vmi">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&fit=crop" alt="Dashboard VMI logística"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-vmi',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="d_vmi.h">Logística VMI: Cero Mermas Garantizado</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="d_vmi.w">Vendor Managed Inventory: FME conectado a tus datos de venta y stock en tiempo real, reposición autónoma, merma asumida por nosotros.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="d_vmi.f">Retailers con datos de stock integrables (EDI, API, WMS). Requiere volumen mínimo mensual.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="d_vmi.r">Servicio Premium. Nos conectamos a tus datos, reponemos y asumimos mermas. 0€ de merma en tu P&L. Cero roturas.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /solution-grid -->
+    </div><!-- /panel-retail -->
+
+    <!-- ════════════════════════════════════════
+         FOODSERVICE PANEL
+    ════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-foodservice">
+      <div id="fs-top"></div>
+
+      <div class="section-confirm" style="background:linear-gradient(135deg,#E8EEF5 0%,#fff 60%);border-color:#C8D8E8">
+        <span class="sc-icon">👨‍🍳</span>
+        <h2 style="color:var(--dark)"><em style="color:var(--dark)" data-i18n="pc.fs.em">Soluciones para FOODSERVICE</em> <span data-i18n="pc.fs.rest">e INDUSTRIA</span></h2>
+        <p data-i18n="pc.fs.p">Desde distribuidores mayoristas hasta restauración organizada y colectividades. Un solo proveedor, un solo estándar, cero sorpresas.</p>
+      </div>
+
+      <div class="fs-grid" id="fs-solution-grid">
+
+        <!-- F1 · Distribución -->
+        <div class="sol-card f1" onclick="toggleDrawer('drawer-distrib', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fit=crop" alt="Distribución Horeca"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="f1.k">Distribución Horeca</div>
+            <h4 data-i18n="f1.h">Volumen garantizado para mayoristas</h4>
+            <div class="card-blurb" data-i18n="f1.b">Máxima vida útil. Cadena de frío ininterrumpida hasta tu almacén.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- F2 · Restauración Organizada -->
+        <div class="sol-card f2" onclick="toggleDrawer('drawer-org', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop" alt="Restauración organizada franquicia"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="f2.k">Restauración Organizada</div>
+            <h4 data-i18n="f2.h">El mismo sabor en todas tus franquicias</h4>
+            <div class="card-blurb" data-i18n="f2.b">Estandarizamos tus recetas para que clones el éxito en cada local.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- F3 · Ready to Cook -->
+        <div class="sol-card f3" onclick="toggleDrawer('drawer-rtc', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80&fit=crop" alt="Ready to Cook bolsa laminados"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="f3.k">Formatos Ready to Cook</div>
+            <h4 data-i18n="f3.h">Clava tu coste por ración al céntimo</h4>
+            <div class="card-blurb" data-i18n="f3.b">Cero mermas en cocina. 100% rendimiento desde el primer día.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- F4 · Suministro Industria -->
+        <div class="sol-card f4" onclick="toggleDrawer('drawer-sumin', this)">
+          <div class="card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80&fit=crop" alt="Fábrica DMP producción"/>
+          </div>
+          <div class="card-body">
+            <div class="card-kicker" data-i18n="f4.k">Suministro Constante 365 Días</div>
+            <h4 data-i18n="f4.h">Soberanía productiva total</h4>
+            <div class="card-blurb" data-i18n="f4.b">Precios estables los 365 días. Tu carta nunca cojea.</div>
+            <div class="card-cta"><span data-i18n="card.more">Ver solución completa</span><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          </div>
+        </div>
+
+        <!-- FS DRAWERS -->
+        <div class="drawer" id="drawer-distrib">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&fit=crop" alt="Camión FME descargando"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-distrib',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="df_distrib.h">Distribución Horeca y Mayoristas</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="df_distrib.w">Volumen garantizado y formatos adaptados para mayoristas. Máxima vida útil gracias a nuestra cadena de frío ininterrumpida desde origen hasta tu almacén.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="df_distrib.f">Mayoristas, distribuidores Horeca y centrales de compra que necesitan volumen fiable, formatos adaptados y logística de primer nivel.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="df_distrib.r">Máxima vida útil del producto. Cero roturas de stock en tu almacén. Volumen garantizado los 365 días del año.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-org">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop" alt="Cocina central franquicia"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-org',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="df_org.h">Restauración Organizada y Estandarización</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="df_org.w">Estandarización total de recetas y producto para cadenas de restauración. El mismo calibre, formato y precio en todos tus centros, siempre.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="df_org.f">Grupos de restauración, franquicias y colectividades que necesitan el mismo resultado en cada local, sin variaciones de producto.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="df_org.r">Mismo sabor y coste en todas tus franquicias. Estandarizamos tus recetas para que clones el éxito en cada local.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-rtc">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80&fit=crop" alt="Bolsa laminados 3kg abierta"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-rtc',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="df_rtc.h">Eficiencia a los Fogones: Formatos Ready to Cook</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="df_rtc.w">Setas limpias, laminadas o en cuartos para entrar directamente en partida. Sin merma de limpieza, sin variabilidad de calibre, sin horas extra de brigada.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="df_rtc.f">Cocinas profesionales, colectividades y grupos que quieren estandarizar el coste por ración y liberar tiempo de brigada.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="df_rtc.r">Rentabilidad a los fogones. Cero mermas en cocina, coste por ración exacto al céntimo. 100% rendimiento desde el primer día.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer" id="drawer-sumin">
+          <div class="drawer-inner">
+            <div class="drawer-img"><img src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80&fit=crop" alt="Instalaciones DMP producción industrial"/></div>
+            <div class="drawer-content">
+              <button class="drawer-close" onclick="closeDrawer('drawer-sumin',event)">✕</button>
+              <img src="https://placehold.co/800x400/eeeeee/8A9087?text=Imagen+Servicio" style="width:100%; height:200px; object-fit:cover; border-radius:6px; margin-bottom:1rem; display:block;" alt="Servicio">
+              <h3 data-i18n="df_sumin.h">Suministro Constante e Industria Alimentaria</h3>
+              <div class="drawer-cols">
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.what">Qué es</div><p data-i18n="df_sumin.w">Producción propia + importación directa los 365 días. Sin dependencia de mercado spot ni de estacionalidad. Precios estables por contrato.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.for">Para quién</div><p data-i18n="df_sumin.f">Industria alimentaria, grupos de restauración y colectividades que necesitan planificación fiable y precios predictibles a lo largo del año.</p></div>
+                <div class="drawer-col"><div class="dc-label" data-i18n="dd.result">Resultado</div><p data-i18n="df_sumin.r">Soberanía productiva total. Blindamos tus escandallos y estabilizamos los precios frente a fluctuaciones del mercado los 365 días.</p></div>
+              </div>
+              <button class="drawer-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.5 11.5 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1C9.61 21 3 14.39 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.21 2.21z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span data-i18n="cta.contact">Hablar con un Especialista</span></button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /fs-solution-grid -->
+
+    </div><!-- /panel-foodservice -->
+
+    </div><!-- /tab-panels-wrap -->
+
+  </div><!-- /wrap -->
+</section>
+
+
+<hr class="divider"/>
+
+<!-- QUIÉNES SOMOS -->
+<section class="qs-section" id="nosotros">
+  <div class="wrap">
+    <div class="qs-header">
+      <div class="qs-badge" data-i18n="qs.badge">QUIÉNES SOMOS</div>
+      <h2><em data-i18n="qs.h2em">Soberanía Productiva 360º.</em> <span data-i18n="qs.h2rest">Cero intermediarios.</span></h2>
+      <p data-i18n="qs.sub">No somos un simple trader. Somos el ecosistema productor y logístico que blinda la rentabilidad de las mayores cadenas de Europa.</p>
+    </div>
+    <div class="qs-pillars">
+      <div class="qs-pillar">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#5E9E28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 52V28"/>
+            <path d="M32 28c-6-8-12-10-16-10 0 8 4 14 16 18z"/>
+            <path d="M32 28c6-8 12-10 16-10 0 8-4 14-16 18z"/>
+            <circle cx="32" cy="20" r="3" fill="#5E9E28"/>
+            <path d="M28 52h8M24 56h16"/>
+          </svg>
+        </div>
+        <h4 data-i18n="qs.p1h">Cultivo Propio</h4>
+        <p data-i18n="qs.p1p">Control total desde la espora. Instalaciones en La Rioja, Lleida y Holanda. Volumen asegurado los 365 días del año.</p>
+      </div>
+      <div class="qs-pillar">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#5E9E28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="32" cy="32" r="20"/>
+            <path d="M32 18v8l6 6"/>
+            <circle cx="32" cy="32" r="3" fill="#5E9E28"/>
+            <path d="M28 12h8M12 28v8M52 28v8M28 52h8"/>
+            <path d="M20 20l4 4M44 20l-4 4M44 44l-4-4M20 44l4-4"/>
+          </svg>
+        </div>
+        <h4 data-i18n="qs.p2h">Procesado y Calidad</h4>
+        <p data-i18n="qs.p2p">Tecnología de envasado de última generación y procesado de IV Gama bajo certificaciones IFS y BRC. Sin compromisos en trazabilidad.</p>
+      </div>
+      <div class="qs-pillar">
+        <div class="pillar-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#5E9E28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="24" width="32" height="20" rx="2"/>
+            <path d="M40 30h8l8 8v8H40V30z"/>
+            <circle cx="18" cy="48" r="4"/>
+            <circle cx="44" cy="48" r="4"/>
+            <path d="M14 30h12M14 34h8"/>
+            <path d="M32 10L28 18h8l-4-8zM32 18v6"/>
+          </svg>
+        </div>
+        <h4 data-i18n="qs.p3h">Plataformas Logísticas</h4>
+        <p data-i18n="qs.p3p">3 centrales logísticas en Europa. Conexión directa con tus plataformas para entregarte frescura y retirar el riesgo de tu cuenta de resultados.</p>
+      </div>
+    </div>
+    <div class="qs-group-block">
+      <div class="qg-text">
+        <h3 data-i18n="qi.h">Tres empresas. Una sola cadena de valor.</h3>
+        <p data-i18n="qi.p">FME (Holanda) lidera la importación, logística y distribución europea. DMP — Delicious Mushroom Produce (España) gestiona la producción y relaciones retail. Champur (Francia) opera en el mercado francés con especialización en setas de temporada y formatos gourmet.</p>
+      </div>
+      <div class="qg-stats">
+        <div class="qg-stat"><div class="qg-val">+60M€</div><div class="qg-label" data-i18n="qi.s1">Facturación conjunta 2025</div></div>
+        <div class="qg-stat"><div class="qg-val">3</div><div class="qg-label" data-i18n="qi.s2">Países con producción propia</div></div>
+        <div class="qg-stat"><div class="qg-val">+15</div><div class="qg-label" data-i18n="qi.s3">Cadenas de distribución activas en Europa</div></div>
+        <div class="qg-stat"><div class="qg-val">IFS</div><div class="qg-label" data-i18n="qi.s4">BRC · GlobalG.A.P. en todas las plantas</div></div>
+      </div>
+    </div>
+    <div class="prod-photos">
+      <div class="prod-photo"><img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80&fit=crop" alt="Cultivo Pleurotus"/><div class="prod-cap" data-i18n="pp1">Cultivo de Pleurotus — España</div></div>
+      <div class="prod-photo"><img src="https://images.unsplash.com/photo-1591382386627-349b692688ff?w=800&q=80&fit=crop" alt="Champiñón industrial"/><div class="prod-cap" data-i18n="pp2">Producción industrial de Champiñón</div></div>
+    </div>
+    <div class="cert-strip">
+      <span class="cs-label" data-i18n="cs.label">Certificaciones</span>
+      <img src="https://placehold.co/80x28/E8F5E9/2E7D32?text=IFS&font=montserrat" alt="IFS Food" class="cs-logo"/>
+      <img src="https://placehold.co/80x28/E3F2FD/1565C0?text=BRC&font=montserrat" alt="BRC Certified" class="cs-logo"/>
+      <img src="https://placehold.co/80x28/FFF8E1/E65100?text=GlobalGAP&font=montserrat" alt="GlobalG.A.P." class="cs-logo"/>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="fg">
+      <div class="footer-brand">
+        <img src="https://placehold.co/140x42/1B2B45/FFFFFF?text=FME+Group&font=montserrat" alt="FME Group" class="fl-logo"/>
+        <p data-i18n="ft.brand">Productores e importadores de setas y champiñones. Control 360º desde el cultivo hasta la plataforma logística de nuestros clientes.</p>
+      </div>
+      <div class="fc">
+        <h5 data-i18n="ft.areas">Áreas</h5>
+        <ul>
+          <li><a href="#tabs" onclick="switchTabByName('retail')" data-i18n="tab.r.main">Soy RETAIL</a></li>
+          <li><a href="#tabs" onclick="switchTabByName('foodservice')" data-i18n="tab.f.main">Soy FOODSERVICE</a></li>
+          <li><a href="#nosotros" data-i18n="ft.q">Quiénes Somos</a></li>
+        </ul>
+        <h5 style="margin-top:1.1rem;" data-i18n="ft.contact">Contacto directo</h5>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#0b796e7f6a62674b6d666e266c79647e7b25686466"><span class="__cf_email__" data-cfemail="7f0d1a0b1e16133f19121a52180d100a0f511c1012">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#ff9990909b8c9a8d89969c9abf99929ad2988d908a8fd19c9092"><span class="__cf_email__" data-cfemail="dbbdb4b4bfa8bea9adb2b8be9bbdb6bef6bca9b4aeabf5b8b4b6">[email&#160;protected]</span></a></li>
+          <li><a href="tel:+34900000000">+34 900 000 000</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h5 data-i18n="ft.form">Contacto rápido</h5>
+        <div class="ff">
+          <div class="ff-row"><input type="text" placeholder="Nombre"/><input type="text" placeholder="Empresa"/></div>
+          <input type="email" placeholder="Email corporativo"/>
+          <textarea placeholder="¿En qué podemos ayudarte?"></textarea>
+          <button type="button" class="ff-submit" data-i18n="form.submit">Enviar consulta</button>
+        </div>
+      </div>
+    </div>
+    <div class="fb">
+      <img src="https://placehold.co/140x42/1B2B45/FFFFFF?text=FME+Group&font=montserrat" alt="FME" class="fb-logo"/>
+      <p>© 2025 FME Group · DMP · Champur · La Rioja · Lleida · Madrid · Nederland</p>
+      <p data-i18n="ft.legal">Aviso legal · Política de privacidad</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ─── HERO SWAP ─── */
+function swapHero(el,src){
+  const img=document.getElementById('hero-main-img');
+  img.style.opacity='0';
+  setTimeout(()=>{img.src=src;img.style.opacity='1';},280);
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* ─── DRAWER SYSTEM ───
+   Each card has a corresponding drawer div after it in the grid.
+   toggleDrawer opens/closes with animation and closes others.
+   The drawer spans grid-column:1/-1 so it always sits at full width. */
+function toggleDrawer(drawerId, cardEl){
+  const drawer = document.getElementById(drawerId);
+  const isOpen = drawer.classList.contains('open');
+
+  // Close all drawers and deactivate all cards
+  document.querySelectorAll('.drawer').forEach(d=>{d.classList.remove('open')});
+  document.querySelectorAll('.sol-card').forEach(c=>{c.classList.remove('open')});
+
+  if(!isOpen){
+    drawer.classList.add('open');
+    cardEl.classList.add('open');
+    // Scroll drawer into view
+    setTimeout(()=>{
+      drawer.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },60);
+  }
+}
+function closeDrawer(drawerId, evt){
+  evt && evt.stopPropagation();
+  const drawer = document.getElementById(drawerId);
+  drawer.classList.remove('open');
+  document.querySelectorAll('.sol-card').forEach(c=>c.classList.remove('open'));
+}
+
+/* ─── TAB SYSTEM ─── */
+function switchTab(which, btn){
+  // Total isolation: hide all panels
+  document.querySelectorAll('.tab-panel').forEach(p=>{
+    p.classList.remove('active');
+    p.style.display='none';
+  });
+  // Close all drawers when switching tabs
+  document.querySelectorAll('.drawer').forEach(d=>d.classList.remove('open'));
+  document.querySelectorAll('.sol-card').forEach(c=>c.classList.remove('open'));
+
+  // Show target
+  const target = document.getElementById('panel-'+which);
+  target.style.display='block';
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{target.classList.add('active')});
+  });
+
+  // Button states
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Scroll to tabs area (header) after animation
+  setTimeout(()=>{
+    const tabsEl = document.getElementById('tabs');
+    if(tabsEl) tabsEl.scrollIntoView({behavior:'smooth',block:'start'});
+  },120);
+}
+function switchTabByName(which){
+  const btn = document.getElementById('tab-btn-'+which);
+  if(btn) switchTab(which,btn);
+}
+
+/* ─── I18N ─── */
+const T={
+  es:{
+    "trust.title":"Homologados en Grandes Cuentas Europeas","cta.contact":"Hablar con un Especialista","nav.back":"Inicio","nav.qs":"Quiénes somos",
+    "hero.badge":"Productores directos · Sin intermediarios","hero.h1a":"Setas y Champiñones Directos del Productor.","hero.h1b":"Cero Intermediarios. Cero Roturas.",
+    "hero.sub":"Protegemos tu margen y garantizamos tu suministro. Desde nuestros cultivos e importación directa, hasta tu plataforma logística.",
+    "hero.cta":"Retail o Foodservice",
+    "stats.eyebrow":"NUESTRO MÚSCULO EN DATOS CLAVE","stats.t":"Facturación 2025","stats.l":"Centrales Logísticas Europeas","stats.s":"Días de Suministro Garantizado","stats.c":"Certificados IFS, BRC &amp; GlobalGap",
+    "strip.nl":"Hub NL","strip.es":"DMP — ES","strip.fr":"Champur — FR",
+    "gate.h2":"¿Para qué canal compras?","gate.sub":"Selecciona tu perfil. El contenido cambiará por completo.",
+    "tab.r.main":"Soy RETAIL","tab.r.sub":"Jefe / Director de Compras","tab.f.main":"Soy FOODSERVICE","tab.f.sub":"Director Compras / Chef Ejecutivo",
+    "pc.retail.em":"Soluciones Estratégicas","pc.retail.rest":"para RETAIL","pc.retail.p":"5 líneas de negocio diseñadas para atrapar al consumidor actual, subir el ticket medio y blindar tu rentabilidad de categoría.",
+    "pc.fs.em":"Soluciones para FOODSERVICE","pc.fs.rest":"e INDUSTRIA","pc.fs.p":"Desde distribuidores mayoristas hasta restauración organizada y colectividades. Un solo proveedor, un solo estándar, cero sorpresas.",
+    "card.more":"Ver solución completa",
+    "r.new":"NUEVO","r5.tag":"Servicio Premium",
+    "r1.k":"Proyecto DROPS · IV Gama","r1.h":"Dinamita para tu lineal de frío","r1.b":"Bandejas refrigeradas con mezclas premium. Máximo margen, máximo impulso.",
+    "r2.k":"Commodities · Alta Rotación","r2.h":"El motor de tu categoría","r2.b":"Suministro masivo blindado los 365 días. Sin depender de terceros.",
+    "r3.k":"Especialidades Laminadas","r3.h":"Listo para la sartén","r3.b":"Producto limpio y cortado que aumenta el valor de la cesta.",
+    "r4.k":"IN/OUT · Silvestres","r4.h":"Tráfico e impulso en fechas clave","r4.b":"Exóticos estacionales de alto margen para Navidad y Otoño.",
+    "r5.k":"Gestión Logística VMI","r5.h":"Nos conectamos. Tú solo vendes.","r5.b":"Mermas asumidas, reposición autónoma. Riesgo logístico a cero.",
+    "dd.what":"Qué es","dd.for":"Para quién","dd.result":"Resultado",
+    "d_drops.h":"Innovación IV Gama: Proyecto DROPS","d_drops.w":"2 referencias permanentes + 6 lanzamientos bimensuales que crean urgencia de compra y elevan el ticket medio de la cesta.","d_drops.f":"Retailers que quieren diferenciar su lineal de IV Gama y generar tráfico con novedades.","d_drops.r":"Dinamita para tu lineal. Sube ticket medio y atrapa consumidor sin tiempo. Margen bruto por encima de la media de categoría.","d_drops.cta":"Solicitar dossier DROPS",
+    "d_comm.h":"Volumen Blindado: Commodities de Rotación","d_comm.w":"Champiñón blanco y Portobello en bandejas 250g, 500g y granel. Producción propia + importación directa. Sin intermediarios.","d_comm.f":"Cualquier retailer que necesite garantía de suministro sin interrupciones todo el año, con precio estable.","d_comm.r":"Motor de tu categoría. Suministro masivo blindado los 365 días. Cero roturas. Precio cerrado por temporada.","d_comm.cta":"Solicitar tarifa por volumen",
+    "d_espec.h":"Eficiencia para el Cliente: Especialidades Laminadas","d_espec.w":"Laminado 3mm, tiras salteado, troceado coarse y entero calibrado. 100% rendimiento, cero preparación en tienda.","d_espec.f":"Retailers que quieren subir el precio medio de su categoría de frescos respondiendo a la demanda de conveniencia.","d_espec.r":"Respuesta al 'no tengo tiempo'. Sube valor cesta. Precio por ración superior al producto entero.","d_espec.cta":"Solicitar ficha técnica",
+    "d_inout.h":"Dinamismo en el Lineal: IN/OUT y Silvestres","d_inout.w":"Seta de Cardo, Níscalo, Trompeta Negra, mezclas otoñales, surtidos navideños. Disponibilidad puntual y controlada.","d_inout.f":"Retailers que quieren activar campañas estacionales de alto margen y captar al consumidor más exigente.","d_inout.r":"Rompe monotonía. Campañas estacionales de alto margen. Tráfico incremental y compra por impulso.","d_inout.cta":"Solicitar calendario estacional",
+    "d_vmi.h":"Logística VMI: Cero Mermas Garantizado","d_vmi.w":"FME conectado a tus datos en tiempo real. Reposición autónoma. Merma asumida por nosotros en tu plataforma logística.","d_vmi.f":"Retailers con datos de stock integrables (EDI, API, WMS) y volumen mínimo mensual.","d_vmi.r":"Servicio Premium. Nos conectamos a tus datos, reponemos y asumimos mermas. 0€ de merma en tu P&L.","d_vmi.cta":"Solicitar diagnóstico VMI",
+    "f1.k":"Distribución Horeca","f1.h":"Volumen garantizado para mayoristas","f1.b":"Máxima vida útil. Cadena de frío ininterrumpida hasta tu almacén.",
+    "f2.k":"Restauración Organizada","f2.h":"El mismo sabor en todas tus franquicias","f2.b":"Estandarizamos tus recetas para que clones el éxito en cada local.",
+    "f3.k":"Formatos Ready to Cook","f3.h":"Clava tu coste por ración al céntimo","f3.b":"Cero mermas en cocina. 100% rendimiento desde el primer día.",
+    "f4.k":"Suministro Constante 365 Días","f4.h":"Soberanía productiva total","f4.b":"Precios estables los 365 días. Tu carta nunca cojea.",
+    "df_distrib.h":"Distribución Horeca y Mayoristas","df_distrib.w":"Volumen garantizado y formatos adaptados para mayoristas. Máxima vida útil gracias a nuestra cadena de frío ininterrumpida desde origen hasta tu almacén.","df_distrib.f":"Mayoristas, distribuidores Horeca y centrales de compra que necesitan volumen fiable y logística de primer nivel.","df_distrib.r":"Máxima vida útil del producto. Cero roturas en tu almacén. Volumen garantizado los 365 días.","df_distrib.cta":"Hablar con un especialista",
+    "df_org.h":"Restauración Organizada y Estandarización","df_org.w":"Estandarización total de recetas y producto para cadenas de restauración. El mismo calibre, formato y precio en todos tus centros.","df_org.f":"Grupos de restauración, franquicias y colectividades que necesitan el mismo resultado en cada local, sin variaciones.","df_org.r":"Mismo sabor y coste en todas tus franquicias. Estandarizamos tus recetas para que clones el éxito en cada local.","df_org.cta":"Hablar con un especialista",
+    "df_rtc.h":"Eficiencia a los Fogones: Formatos Ready to Cook","df_rtc.w":"Setas limpias, laminadas o en cuartos para entrar directamente en partida. Sin merma de limpieza, sin horas extra de brigada.","df_rtc.f":"Cocinas profesionales, colectividades y grupos que quieren estandarizar el coste por ración y liberar tiempo de brigada.","df_rtc.r":"Rentabilidad a los fogones. Cero mermas en cocina, coste por ración exacto al céntimo. 100% rendimiento.","df_rtc.cta":"Solicitar catálogo RTC",
+    "df_sumin.h":"Suministro Constante e Industria Alimentaria","df_sumin.w":"Producción propia + importación directa los 365 días. Sin dependencia de mercado spot ni de estacionalidad.","df_sumin.f":"Industria alimentaria, grupos de restauración y colectividades que necesitan planificación fiable y precios predictibles.","df_sumin.r":"Soberanía productiva total. Blindamos tus escandallos y estabilizamos los precios frente a fluctuaciones del mercado.","df_sumin.cta":"Hablar con un especialista",
+    "fs.cta.h":"📞 Hablar con un Especialista Horeca","fs.cta.sub":"Asegura tu suministro y mejora tus escandallos hoy mismo.","fs.cta.btn":"Hablar con un Especialista Horeca",
+    "qs.badge":"QUIÉNES SOMOS",
+    "qs.h2em":"Soberanía Productiva 360º.","qs.h2rest":"Cero intermediarios.","qs.sub":"No somos un simple trader. Somos el ecosistema productor y logístico que blinda la rentabilidad de las mayores cadenas de Europa.",
+    "qs.p1h":"Cultivo Propio","qs.p1p":"Control total desde la espora. Instalaciones en La Rioja, Lleida y Holanda. Volumen asegurado los 365 días del año.",
+    "qs.p2h":"Procesado y Calidad","qs.p2p":"Tecnología de envasado de última generación y procesado de IV Gama bajo certificaciones IFS y BRC. Sin compromisos en trazabilidad.",
+    "qs.p3h":"Plataformas Logísticas","qs.p3p":"3 centrales logísticas en Europa. Conexión directa con tus plataformas para entregarte frescura y retirar el riesgo de tu cuenta de resultados.",
+    "qi.h":"Tres empresas. Una sola cadena de valor.","qi.p":"FME (Holanda) lidera la importación, logística y distribución europea. DMP — Delicious Mushroom Produce (España) gestiona la producción y relaciones retail. Champur (Francia) opera en el mercado francés con especialización en setas de temporada.",
+    "qi.s1":"Facturación conjunta 2025","qi.s2":"Países con producción propia","qi.s3":"Cadenas de distribución activas en Europa","qi.s4":"BRC · GlobalG.A.P. en todas las plantas",
+    "pp1":"Cultivo de Pleurotus — España","pp2":"Producción industrial de Champiñón","cs.label":"Certificaciones",
+    "ft.brand":"Productores e importadores de setas y champiñones. Control 360º desde el cultivo hasta la plataforma logística de nuestros clientes.",
+    "ft.areas":"Áreas","ft.q":"Quiénes Somos","ft.contact":"Contacto directo","ft.form":"Contacto rápido","ft.legal":"Aviso legal · Política de privacidad","form.submit":"Enviar consulta"
+  },
+  en:{
+    "trust.title":"Trusted by Europe's Leading Accounts","cta.contact":"Speak with a Specialist","nav.back":"Home","nav.qs":"About us",
+    "hero.badge":"Direct producers · No middlemen","hero.h1a":"Mushrooms Direct from the Producer.","hero.h1b":"Zero Middlemen. Zero Stockouts.",
+    "hero.sub":"We protect your margin and guarantee your supply. From our own cultivation and direct import, to your logistics platform.",
+    "hero.cta":"Retail or Foodservice",
+    "stats.eyebrow":"OUR STRENGTH IN KEY FIGURES","stats.t":"Turnover 2025","stats.l":"European Logistics Hubs","stats.s":"Days Guaranteed Supply","stats.c":"Certified IFS, BRC &amp; GlobalGap",
+    "strip.nl":"Hub NL","strip.es":"DMP — ES","strip.fr":"Champur — FR",
+    "gate.h2":"Which channel do you buy for?","gate.sub":"Select your profile. The content will change completely.",
+    "tab.r.main":"I'm RETAIL","tab.r.sub":"Buying Manager / Purchasing Director","tab.f.main":"I'm FOODSERVICE","tab.f.sub":"Purchasing Director / Executive Chef",
+    "pc.retail.em":"Strategic Solutions","pc.retail.rest":"for RETAIL","pc.retail.p":"5 business lines designed to capture today's consumer, lift average basket and shield your category profitability.",
+    "pc.fs.em":"Solutions for FOODSERVICE","pc.fs.rest":"& INDUSTRY","pc.fs.p":"From wholesale distributors to organised catering and collectives. One supplier, one standard, zero surprises.",
+    "card.more":"See full solution",
+    "r.new":"NEW","r5.tag":"Premium Service",
+    "r1.k":"DROPS Project · Convenience","r1.h":"Dynamite for your chilled aisle","r1.b":"Refrigerated premium blends. Maximum margin, maximum impulse.",
+    "r2.k":"Commodities · High Rotation","r2.h":"The engine of your category","r2.b":"Massive supply locked in 365 days. No third-party dependency.",
+    "r3.k":"Sliced Specialities","r3.h":"Ready for the pan","r3.b":"Clean, cut product that increases basket value.",
+    "r4.k":"IN/OUT · Wild","r4.h":"Traffic and impulse at key dates","r4.b":"Premium-margin seasonal exotics for Christmas and Autumn.",
+    "r5.k":"VMI Logistics Management","r5.h":"We connect in. You just sell.","r5.b":"Shrinkage absorbed, autonomous replenishment. Logistics risk to zero.",
+    "dd.what":"What it is","dd.for":"Who it's for","dd.result":"Outcome",
+    "d_drops.h":"IV Gama Innovation: DROPS Project","d_drops.w":"2 permanent references + 6 bi-monthly launches that create purchase urgency and lift basket value.","d_drops.f":"Retailers who want to differentiate their convenience aisle and drive traffic with novelties.","d_drops.r":"Dynamite for your aisle. Lifts basket value and captures the time-poor shopper. Gross margin above category average.","d_drops.cta":"Request DROPS dossier",
+    "d_comm.h":"Volume Locked: Commodity Rotation","d_comm.w":"White button and Portobello in 250g, 500g trays and bulk. Own production + direct import. No middlemen.","d_comm.f":"Any retailer needing uninterrupted year-round supply with stable pricing.","d_comm.r":"Engine of your category. Massive supply locked in 365 days. Zero stockouts. Season-locked pricing.","d_comm.cta":"Request volume pricing",
+    "d_espec.h":"Shopper Efficiency: Sliced Specialities","d_espec.w":"3mm sliced, stir-fry strips, coarse diced and whole graded. 100% yield, zero in-store prep.","d_espec.f":"Retailers wanting to lift the average price of their fresh category by meeting convenience demand.","d_espec.r":"Answer to 'no time'. Lifts basket value. Higher price per portion than whole product.","d_espec.cta":"Request technical datasheet",
+    "d_inout.h":"Shelf Dynamism: IN/OUT & Wild","d_inout.w":"Cardoncello, Chanterelle, Black Trumpet, autumn blends, Christmas assortments. Controlled seasonal availability.","d_inout.f":"Retailers wanting to activate high-margin seasonal campaigns and capture discerning shoppers.","d_inout.r":"Break monotony. High-margin seasonal campaigns. Incremental traffic and impulse purchase.","d_inout.cta":"Request seasonal calendar",
+    "d_vmi.h":"VMI Logistics: Zero Shrinkage Guaranteed","d_vmi.w":"FME connected to your real-time data. Autonomous replenishment. Shrinkage absorbed by us at your logistics platform.","d_vmi.f":"Retailers with integratable stock data (EDI, API, WMS) and minimum monthly volume.","d_vmi.r":"Premium service. We connect, replenish and absorb shrinkage. 0€ of shrinkage in your P&L.","d_vmi.cta":"Request VMI diagnosis",
+    "f1.k":"Horeca Distribution","f1.h":"Guaranteed volume for wholesalers","f1.b":"Maximum shelf life. Uninterrupted cold chain to your warehouse.",
+    "f2.k":"Organised Catering","f2.h":"The same taste across all your franchises","f2.b":"We standardise your recipes so you clone success in every location.",
+    "f3.k":"Ready to Cook Formats","f3.h":"Nail your cost per portion to the cent","f3.b":"Zero kitchen waste. 100% yield from day one.",
+    "f4.k":"Constant Supply 365 Days","f4.h":"Total production sovereignty","f4.b":"Stable prices 365 days. Your menu never limps.",
+    "df_distrib.h":"Horeca Distribution & Wholesalers","df_distrib.w":"Guaranteed volume and adapted formats for wholesalers. Maximum shelf life thanks to our uninterrupted cold chain.","df_distrib.f":"Wholesalers, Horeca distributors and purchasing centres needing reliable volume and top-tier logistics.","df_distrib.r":"Maximum product shelf life. Zero stockouts in your warehouse. Volume guaranteed 365 days.","df_distrib.cta":"Speak with a specialist",
+    "df_org.h":"Organised Catering & Standardisation","df_org.w":"Full standardisation of recipes and product for catering chains. Same calibre, format and price across all your sites.","df_org.f":"Restaurant groups, franchises and collectives needing identical results in every location.","df_org.r":"Same taste and cost across all your franchises. We standardise your recipes so you clone success everywhere.","df_org.cta":"Speak with a specialist",
+    "df_rtc.h":"Kitchen Efficiency: Ready to Cook Formats","df_rtc.w":"Clean, sliced or quartered mushrooms ready to go straight into service. No trim waste, no extra brigade time.","df_rtc.f":"Professional kitchens, collectives and groups wanting to standardise cost per portion and free up brigade time.","df_rtc.r":"Profitability to the kitchen. Zero kitchen waste, exact cost per portion to the cent. 100% yield.","df_rtc.cta":"Request RTC catalogue",
+    "df_sumin.h":"Constant Supply & Food Industry","df_sumin.w":"Own production + direct import 365 days. No spot market dependency, no seasonality risk. Contract pricing.","df_sumin.f":"Food industry, catering groups and collectives needing reliable planning and predictable pricing year-round.","df_sumin.r":"Total production sovereignty. We lock down your cost recipes and stabilise prices against market fluctuations 365 days.","df_sumin.cta":"Speak with a specialist",
+    "fs.cta.h":"📞 Speak with a Horeca Specialist","fs.cta.sub":"Secure your supply and improve your cost recipes today.","fs.cta.btn":"Speak with a Horeca Specialist",
+    "qs.badge":"WHO WE ARE",
+    "qs.h2em":"360° Production Sovereignty.","qs.h2rest":"Zero middlemen.","qs.sub":"We are not a simple trader. We are the production and logistics ecosystem that shields the profitability of Europe's largest chains.",
+    "qs.p1h":"Own Cultivation","qs.p1p":"Total control from the spore. Facilities in La Rioja, Lleida and the Netherlands. Volume secured 365 days a year.",
+    "qs.p2h":"Processing & Quality","qs.p2p":"State-of-the-art packaging technology and convenience processing under IFS and BRC certifications.",
+    "qs.p3h":"Logistics Platforms","qs.p3p":"3 logistics hubs in Europe. Direct connection with your platforms to deliver freshness and remove P&L risk.",
+    "qi.h":"Three companies. One value chain.","qi.p":"FME (Netherlands) leads import, logistics and European distribution. DMP (Spain) manages production and retail relationships. Champur (France) operates in the French market with seasonal specialisation.",
+    "qi.s1":"Combined turnover 2025","qi.s2":"Countries with own production","qi.s3":"Active distribution chains in Europe","qi.s4":"BRC · GlobalG.A.P. across all plants",
+    "pp1":"Pleurotus Cultivation — Spain","pp2":"Industrial Mushroom Production","cs.label":"Certifications",
+    "ft.brand":"Producers and importers of mushrooms. 360° control from cultivation to our clients' logistics platform.",
+    "ft.areas":"Areas","ft.q":"About Us","ft.contact":"Direct contact","ft.form":"Quick contact","ft.legal":"Legal notice · Privacy policy","form.submit":"Send enquiry"
+  },
+  nl:{
+    "trust.title":"Erkend door Europese Grootrekeningen","cta.contact":"Spreken met een Specialist","nav.back":"Begin","nav.qs":"Wie zijn wij",
+    "hero.badge":"Directe producenten · Geen tussenpersonen","hero.h1a":"Paddenstoelen Direct van de Producent.","hero.h1b":"Nul Tussenpersonen. Nul Stockbreuken.",
+    "hero.sub":"Wij beschermen uw marge en garanderen uw levering. Van onze eigen kweek en directe import tot uw logistiek platform.",
+    "hero.cta":"Retail of Foodservice",
+    "stats.eyebrow":"ONZE KRACHT IN CIJFERS","stats.t":"Omzet 2025","stats.l":"Europese Logistieke Hubs","stats.s":"Dagen Gegarandeerde Levering","stats.c":"Gecertificeerd IFS, BRC &amp; GlobalGap",
+    "strip.nl":"Hub NL","strip.es":"DMP — ES","strip.fr":"Champur — FR",
+    "gate.h2":"Voor welk kanaal koopt u?","gate.sub":"Selecteer uw profiel. De inhoud wijzigt volledig.",
+    "tab.r.main":"Ik ben RETAIL","tab.r.sub":"Inkoopmanager / Inkoopdirecteur","tab.f.main":"Ik ben FOODSERVICE","tab.f.sub":"Inkoopdirecteur / Chef-kok",
+    "pc.retail.em":"Strategische Oplossingen","pc.retail.rest":"voor RETAIL","pc.retail.p":"5 bedrijfslijnen voor de hedendaagse consument, hogere bonwaarde en bescherming van uw categoriemarge.",
+    "pc.fs.em":"Oplossingen voor FOODSERVICE","pc.fs.rest":"&amp; INDUSTRIE","pc.fs.p":"Van groothandelsdistributeurs tot georganiseerde horeca. Één leverancier, één standaard, nul verrassingen.",
+    "card.more":"Volledige oplossing bekijken",
+    "r.new":"NIEUW","r5.tag":"Premium Service",
+    "r1.k":"DROPS Project · Convenience","r1.h":"Dynamiet voor uw koelversschap","r1.b":"Gekoelde premium mengsels. Maximale marge, maximaal impuls.",
+    "r2.k":"Commodities · Hoge Rotatie","r2.h":"De motor van uw categorie","r2.b":"Massaal volume geborgd 365 dagen. Geen derdenafhankelijkheid.",
+    "r3.k":"Gesneden Specialiteiten","r3.h":"Klaar voor de pan","r3.b":"Schoon, gesneden product dat de bonwaarde verhoogt.",
+    "r4.k":"IN/OUT · Wildpluk","r4.h":"Traffic en impuls op sleuteldagen","r4.b":"Premium-marge seizoensexotisch voor Kerst en Herfst.",
+    "r5.k":"VMI Logistiek Management","r5.h":"Wij koppelen in. U verkoopt gewoon.","r5.b":"Derving geabsorbeerd, autonome aanvulling. Logistiek risico naar nul.",
+    "dd.what":"Wat het is","dd.for":"Voor wie","dd.result":"Resultaat",
+    "d_drops.h":"IV Gama Innovatie: DROPS Project","d_drops.w":"2 permanente referenties + 6 tweemaandelijkse lanceringen die koopurgentie creëren.","d_drops.f":"Retailers die hun koelversschap willen differentiëren.","d_drops.r":"Dynamiet voor uw schap. Hogere bonwaarde. Bruto marge boven categoriegemiddelde.","d_drops.cta":"DROPS dossier aanvragen",
+    "d_comm.h":"Volume Geborgd: Commodity Rotatie","d_comm.w":"Witte champignon en Portobello in 250g, 500g en bulk. Eigen productie + directe import.","d_comm.f":"Elke retailer die jaarrond bevoorradingszekerheid nodig heeft.","d_comm.r":"Motor van uw categorie. Massaal volume 365 dagen. Nul stockbreuken.","d_comm.cta":"Volumeprijs aanvragen",
+    "d_espec.h":"Efficiëntie voor de Klant: Gesneden Specialiteiten","d_espec.w":"Gesneden 3mm, roerbaakreepjes, grof gehakt. 100% rendement.","d_espec.f":"Retailers die de gemiddelde prijs van hun versecategorie willen verhogen.","d_espec.r":"Antwoord op 'geen tijd'. Hogere bonwaarde. Hogere prijs per portie.","d_espec.cta":"Technische fiche aanvragen",
+    "d_inout.h":"Schapdynamisme: IN/OUT en Wildpluk","d_inout.w":"Kardoen, Cantharel, Zwarte Trompet, herfstmengsels, kerststortiment. Seizoensgebonden beschikbaarheid.","d_inout.f":"Retailers die seizoenscampagnes met hoge marge willen activeren.","d_inout.r":"Doorbreek monotonie. Hoge-marge seizoenscampagnes. Incrementeel traffic.","d_inout.cta":"Seizoenskalender aanvragen",
+    "d_vmi.h":"VMI Logistiek: Nul Derving Gegarandeerd","d_vmi.w":"FME gekoppeld aan uw realtime data. Autonome aanvulling. Derving door ons geabsorbeerd.","d_vmi.f":"Retailers met integreerbare voorraaddata en minimum maandvolume.","d_vmi.r":"Premium service. Wij koppelen, vullen aan en absorberen derving. 0€ derving in uw P&L.","d_vmi.cta":"VMI diagnose aanvragen",
+    "f1.k":"Horeca Distributie","f1.h":"Gegarandeerd volume voor groothandels","f1.b":"Maximale houdbaarheid. Ononderbroken koelketen tot uw magazijn.",
+    "f2.k":"Georganiseerde Restauratie","f2.h":"Dezelfde smaak in al uw franchises","f2.b":"Wij standaardiseren uw recepten zodat u succes kunt klonen.",
+    "f3.k":"Ready to Cook Formaten","f3.h":"Portiekosten tot op de cent","f3.b":"Nul keukenverliezen. 100% rendement vanaf dag één.",
+    "f4.k":"Constant Aanbod 365 Dagen","f4.h":"Totale productiesouvereiniteit","f4.b":"Stabiele prijzen 365 dagen. Uw kaart holt nooit.",
+    "df_distrib.h":"Horeca Distributie &amp; Groothandels","df_distrib.w":"Gegarandeerd volume en aangepaste formaten. Maximale houdbaarheid dankzij onze ononderbroken koelketen.","df_distrib.f":"Groothandels en horeca inkoopcentra die betrouwbaar volume en toplogistiek nodig hebben.","df_distrib.r":"Maximale houdbaarheid. Nul stockbreuken. Volume geborgd 365 dagen.","df_distrib.cta":"Spreken met een specialist",
+    "df_org.h":"Georganiseerde Restauratie &amp; Standaardisatie","df_org.w":"Volledige standaardisatie van recepten voor restauratieketens. Hetzelfde kaliber, formaat en prijs overal.","df_org.f":"Restaurantgroepen, franchises en collectiviteiten die identieke resultaten in elke vestiging nodig hebben.","df_org.r":"Dezelfde smaak en kosten in al uw franchises. Wij standaardiseren uw recepten voor succes overal.","df_org.cta":"Spreken met een specialist",
+    "df_rtc.h":"Keukenefficiëntie: Ready to Cook Formaten","df_rtc.w":"Schone, gesneden of gekvartelde paddenstoelen klaar voor directe inzet. Geen snijverlies, geen extra brigadetijd.","df_rtc.f":"Professionele keukens en groepen die portiekosten willen standaardiseren en brigadetijd willen vrijmaken.","df_rtc.r":"Winstgevendheid naar de keuken. Nul keukenverliezen, exacte portiekosten. 100% rendement.","df_rtc.cta":"RTC catalogus aanvragen",
+    "df_sumin.h":"Constant Aanbod &amp; Voedingsindustrie","df_sumin.w":"Eigen productie + directe import 365 dagen. Geen spotmarkt, geen seizoensrisico. Contractprijzen.","df_sumin.f":"Voedingsindustrie en groepen die betrouwbare planning en voorspelbare prijzen het hele jaar nodig hebben.","df_sumin.r":"Totale productiesouvereiniteit. Wij borgen uw kalkulaties en stabiliseren prijzen het hele jaar.","df_sumin.cta":"Spreken met een specialist",
+    "fs.cta.h":"📞 Spreken met een Horeca Specialist","fs.cta.sub":"Beveilig uw levering en verbeter uw kalkulaties vandaag nog.","fs.cta.btn":"Spreken met een Horeca Specialist",
+    "qs.badge":"WIE ZIJN WIJ",
+    "qs.h2em":"360° Productiesouvereiniteit.","qs.h2rest":"Geen tussenpersonen.","qs.sub":"Wij zijn geen simpele trader. Wij zijn het productie- en logistiek ecosysteem dat de rentabiliteit van Europa's grootste ketens beschermt.",
+    "qs.p1h":"Eigen Kweek","qs.p1p":"Totale controle van spore tot schap. La Rioja, Lleida en Nederland. Volume geborgd 365 dagen.",
+    "qs.p2h":"Verwerking &amp; Kwaliteit","qs.p2p":"Geavanceerde verpakkingstechnologie en IV Gama verwerking onder IFS en BRC certificeringen.",
+    "qs.p3h":"Logistieke Platforms","qs.p3p":"3 logistieke hubs in Europa. Directe koppeling voor frisheid en risicovrije levering.",
+    "qi.h":"Drie bedrijven. Één waardeketen.","qi.p":"FME (Nederland), DMP (Spanje) en Champur (Frankrijk) — drie complementaire bedrijven met eigen productie in drie landen.",
+    "qi.s1":"Gecombineerde omzet 2025","qi.s2":"Landen met eigen productie","qi.s3":"Actieve distributieketens in Europa","qi.s4":"BRC · GlobalG.A.P. in alle vestigingen",
+    "pp1":"Pleurotus Kweek — Spanje","pp2":"Industriële Champignonproductie","cs.label":"Certificeringen",
+    "ft.brand":"Telers en importeurs van paddenstoelen. 360° controle van teelt tot logistiek platform.","ft.areas":"Gebieden","ft.q":"Over Ons","ft.contact":"Direct contact","ft.form":"Snel contact","ft.legal":"Juridische kennisgeving · Privacybeleid","form.submit":"Vraag verzenden"
+  },
+  fr:{
+    "trust.title":"Référencés dans les Grands Comptes Européens","cta.contact":"Parler avec un Spécialiste","nav.back":"Accueil","nav.qs":"Qui sommes-nous",
+    "hero.badge":"Producteurs directs · Sans intermédiaires","hero.h1a":"Champignons Directs du Producteur.","hero.h1b":"Zéro Intermédiaires. Zéro Ruptures.",
+    "hero.sub":"Nous protégeons votre marge et garantissons votre approvisionnement. De nos cultures et importation directe jusqu'à votre plateforme logistique.",
+    "hero.cta":"Retail ou Foodservice",
+    "stats.eyebrow":"NOTRE FORCE EN CHIFFRES CLÉS","stats.t":"Chiffre d'affaires 2025","stats.l":"Plateformes Logistiques Européennes","stats.s":"Jours d'Approvisionnement Garanti","stats.c":"Certifiés IFS, BRC &amp; GlobalGap",
+    "strip.nl":"Hub NL","strip.es":"DMP — ES","strip.fr":"Champur — FR",
+    "gate.h2":"Pour quel canal achetez-vous ?","gate.sub":"Sélectionnez votre profil. Le contenu changera complètement.",
+    "tab.r.main":"Je suis RETAIL","tab.r.sub":"Responsable / Directeur des Achats","tab.f.main":"Je suis FOODSERVICE","tab.f.sub":"Directeur Achats / Chef Exécutif",
+    "pc.retail.em":"Solutions Stratégiques","pc.retail.rest":"pour RETAIL","pc.retail.p":"5 lignes de métier pour capter le consommateur actuel, augmenter le ticket moyen et protéger votre rentabilité de catégorie.",
+    "pc.fs.em":"Solutions pour FOODSERVICE","pc.fs.rest":"&amp; INDUSTRIE","pc.fs.p":"Des grossistes aux restaurants organisés et collectivités. Un seul fournisseur, un seul standard, zéro surprise.",
+    "card.more":"Voir la solution complète",
+    "r.new":"NOUVEAU","r5.tag":"Service Premium",
+    "r1.k":"Projet DROPS · IV Gama","r1.h":"Dynamite pour votre rayon frais","r1.b":"Mélanges premium réfrigérés. Marge maximum, impulsion maximum.",
+    "r2.k":"Commodités · Haute Rotation","r2.h":"Le moteur de votre catégorie","r2.b":"Approvisionnement massif garanti 365 jours. Sans dépendance aux tiers.",
+    "r3.k":"Spécialités Émincées","r3.h":"Prêt pour la poêle","r3.b":"Produit propre et découpé qui augmente la valeur du panier.",
+    "r4.k":"IN/OUT · Sauvages","r4.h":"Trafic et impulsion aux dates clés","r4.b":"Exotiques saisonniers à haute marge pour Noël et l'Automne.",
+    "r5.k":"Gestion Logistique VMI","r5.h":"Nous nous connectons. Vous vendez.","r5.b":"Pertes absorbées, réapprovisionnement autonome. Risque logistique à zéro.",
+    "dd.what":"Qu'est-ce que c'est","dd.for":"Pour qui","dd.result":"Résultat",
+    "d_drops.h":"Innovation IV Gama : Projet DROPS","d_drops.w":"2 références permanentes + 6 lancements bimensuels créant une urgence d'achat et augmentant le ticket.","d_drops.f":"Enseignes qui veulent différencier leur rayon IV Gama et générer du trafic.","d_drops.r":"Dynamite pour votre rayon. Ticket moyen en hausse. Marge brute au-dessus de la moyenne de catégorie.","d_drops.cta":"Demander le dossier DROPS",
+    "d_comm.h":"Volume Blindé : Commodités de Rotation","d_comm.w":"Champignon blanc et Portobello en barquettes 250g, 500g et vrac. Production propre + importation directe.","d_comm.f":"Toute enseigne nécessitant une garantie d'approvisionnement ininterrompue.","d_comm.r":"Moteur de votre catégorie. Approvisionnement massif 365 jours. Zéro rupture. Prix bloqué par saison.","d_comm.cta":"Demander un tarif volume",
+    "d_espec.h":"Efficacité Client : Spécialités Émincées","d_espec.w":"Émincé 3mm, lamelles sauté, émincé grossier. 100% rendement, zéro préparation en magasin.","d_espec.f":"Enseignes voulant augmenter le prix moyen de leur catégorie frais en répondant à la demande de praticité.","d_espec.r":"Réponse au 'je n'ai pas le temps'. Augmente la valeur panier. Prix par portion supérieur.","d_espec.cta":"Demander une fiche technique",
+    "d_inout.h":"Dynamisme en Rayon : IN/OUT &amp; Sauvages","d_inout.w":"Cardoncelle, Girolle, Trompette Noire, mélanges automnaux, assortiments de Noël.","d_inout.f":"Enseignes voulant activer des campagnes saisonnières à haute marge.","d_inout.r":"Brisez la monotonie. Campagnes saisonnières à haute marge. Trafic incrémental et achats d'impulsion.","d_inout.cta":"Demander le calendrier saisonnier",
+    "d_vmi.h":"Logistique VMI : Zéro Perte Garanti","d_vmi.w":"FME connecté à vos données en temps réel. Réapprovisionnement autonome. Pertes absorbées par nous.","d_vmi.f":"Enseignes avec données de stock intégrables et volume mensuel minimum.","d_vmi.r":"Service Premium. Nous connectons, réapprovisionnons et absorbons les pertes. 0€ de perte dans votre P&L.","d_vmi.cta":"Demander un diagnostic VMI",
+    "f1.k":"Distribution Horeca","f1.h":"Volume garanti pour les grossistes","f1.b":"Durée de vie maximale. Chaîne du froid ininterrompue jusqu'à votre entrepôt.",
+    "f2.k":"Restauration Organisée","f2.h":"Le même goût dans toutes vos franchises","f2.b":"Nous standardisons vos recettes pour que vous cloniez le succès partout.",
+    "f3.k":"Formats Ready to Cook","f3.h":"Maîtrisez votre coût par portion au centime","f3.b":"Zéro perte en cuisine. 100% rendement dès le premier jour.",
+    "f4.k":"Approvisionnement Constant 365 Jours","f4.h":"Souveraineté productive totale","f4.b":"Prix stables 365 jours. Votre carte ne boite jamais.",
+    "df_distrib.h":"Distribution Horeca &amp; Grossistes","df_distrib.w":"Volume garanti et formats adaptés pour les grossistes. Durée de vie maximale grâce à notre chaîne du froid.","df_distrib.f":"Grossistes, distributeurs Horeca et centrales d'achats nécessitant un volume fiable.","df_distrib.r":"Durée de vie maximale. Zéro rupture dans votre entrepôt. Volume garanti 365 jours.","df_distrib.cta":"Parler avec un spécialiste",
+    "df_org.h":"Restauration Organisée &amp; Standardisation","df_org.w":"Standardisation totale des recettes et du produit pour les chaînes de restauration. Même calibre, format et prix partout.","df_org.f":"Groupes de restauration, franchises et collectivités nécessitant des résultats identiques dans chaque établissement.","df_org.r":"Même goût et coût dans toutes vos franchises. Nous standardisons vos recettes pour cloner le succès partout.","df_org.cta":"Parler avec un spécialiste",
+    "df_rtc.h":"Efficacité en Cuisine : Formats Ready to Cook","df_rtc.w":"Champignons propres, émincés ou en quartiers prêts pour un service direct. Sans perte de parage, sans heures de brigade supplémentaires.","df_rtc.f":"Cuisines professionnelles et groupes voulant standardiser le coût par portion et libérer du temps de brigade.","df_rtc.r":"Rentabilité en cuisine. Zéro perte, coût par portion exact au centime. 100% rendement.","df_rtc.cta":"Demander le catalogue RTC",
+    "df_sumin.h":"Approvisionnement Constant &amp; Industrie Alimentaire","df_sumin.w":"Production propre + importation directe 365 jours. Sans dépendance au marché spot ni à la saisonnalité.","df_sumin.f":"Industrie alimentaire et groupes nécessitant une planification fiable et des prix prévisibles.","df_sumin.r":"Souveraineté productive totale. Nous blindons vos fiches techniques et stabilisons les prix les 365 jours.","df_sumin.cta":"Parler avec un spécialiste",
+    "fs.cta.h":"📞 Parler avec un Spécialiste Horeca","fs.cta.sub":"Sécurisez votre approvisionnement et améliorez vos fiches techniques dès aujourd'hui.","fs.cta.btn":"Parler avec un Spécialiste Horeca",
+    "qs.badge":"QUI SOMMES-NOUS",
+    "qs.h2em":"Souveraineté Productive 360°.","qs.h2rest":"Zéro intermédiaires.","qs.sub":"Nous ne sommes pas un simple trader. Nous sommes l'écosystème producteur et logistique qui protège la rentabilité des plus grandes enseignes européennes.",
+    "qs.p1h":"Culture Propre","qs.p1p":"Contrôle total depuis la spore. La Rioja, Lleida et Pays-Bas. Volume assuré 365 jours par an.",
+    "qs.p2h":"Traitement &amp; Qualité","qs.p2p":"Technologie d'emballage de dernière génération et traitement IV Gama sous certifications IFS et BRC.",
+    "qs.p3h":"Plateformes Logistiques","qs.p3p":"3 plateformes logistiques en Europe. Connexion directe pour vous livrer de la fraîcheur et retirer le risque.",
+    "qi.h":"Trois entreprises. Une seule chaîne de valeur.","qi.p":"FME (Pays-Bas), DMP (Espagne) et Champur (France) — trois entreprises complémentaires avec production propre dans trois pays.",
+    "qi.s1":"Chiffre d'affaires combiné 2025","qi.s2":"Pays avec production propre","qi.s3":"Chaînes de distribution actives en Europe","qi.s4":"BRC · GlobalG.A.P. dans tous les sites",
+    "pp1":"Culture de Pleurotus — Espagne","pp2":"Production industrielle de Champignon","cs.label":"Certifications",
+    "ft.brand":"Producteurs et importateurs de champignons. Contrôle 360° de la culture à la plateforme logistique.","ft.areas":"Espaces","ft.q":"Qui Sommes-Nous","ft.contact":"Contact direct","ft.form":"Contact rapide","ft.legal":"Mentions légales · Politique de confidentialité","form.submit":"Envoyer la demande"
+  }
+};
+
+let lang='es';
+function setLang(l){
+  lang=l;
+  const d=T[l];
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(d[k]!==undefined)el.innerHTML=d[k];
+  });
+  document.querySelectorAll('.lb').forEach(b=>
+    b.classList.toggle('active',b.getAttribute('onclick').includes("'"+l+"'")));
+  const titles={es:'FME — Setas Directas del Productor',en:'FME — Mushrooms Direct from Producer',
+    nl:'FME — Paddenstoelen Direct van de Producent',fr:'FME — Champignons Directs du Producteur'};
+  document.title=titles[l];
+}
+
+(function()

@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FME Group — Setas y Champiñones Directos del Productor</title>
+    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
+  </head>
+  <body>
+    <!-- FME GROUP — RETAIL SECTION (standalone) -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+      html, body, main {
+        background-color: #FFFFFF !important;
+      }
+
+      /* Evitar duplicar contenido cuando React (opción A) está activo */
+      #retail-section, #fs-section {
+        display: none !important;
+      }
+
+      :root {
+        --green:      #5E9E28;
+        --green-light:#f0f7e8;
+        --green-bg:   #f9fbf7;
+        --navy:       #1B2B45;
+        --navy-light: #2c4268;
+        --white:      #FFFFFF;
+        --grey:       #6b7a8d;
+        --border:     #e4ece0;
+        --radius:     12px;
+        --shadow-hover:0 8px 40px rgba(27,43,69,0.15);
+        --font-head:  'DM Serif Display', Georgia, serif;
+        --font-body:  'DM Sans', 'Helvetica Neue', sans-serif;
+      }
+
+      #retail-section *, #retail-section *::before, #retail-section *::after {
+        box-sizing: border-box; margin: 0; padding: 0;
+      }
+
+      #retail-section {
+        background: #FFFFFF;
+        padding: 100px 40px;
+        font-family: var(--font-body);
+        color: var(--navy);
+      }
+
+      .rt-container { max-width: 1400px; margin: 0 auto; }
+
+      .rt-header { margin-bottom: 56px; }
+
+      .rt-eyebrow {
+        display: inline-block;
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 3px; text-transform: uppercase;
+        color: var(--green); background: var(--green-bg);
+        padding: 6px 14px; border-radius: 100px;
+        margin-bottom: 20px; border: 1px solid var(--border);
+      }
+
+      .rt-title {
+        font-family: var(--font-head);
+        font-size: clamp(28px, 3vw, 46px);
+        color: var(--navy); line-height: 1.1; margin-bottom: 12px;
+      }
+
+      .rt-subtitle {
+        font-size: 16px; color: var(--grey);
+        line-height: 1.6; font-weight: 300;
+      }
+
+      /* ── Grid: 5 columnas en una sola fila ── */
+      .rt-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+      }
+
+      .rt-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: flex; flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .rt-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .rt-card-img-wrap {
+        position: relative; height: 160px; overflow: hidden;
+        background: var(--green-bg);
+      }
+
+      .rt-card-img-wrap img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform 0.5s ease; display: block;
+      }
+
+      .rt-card:hover .rt-card-img-wrap img { transform: scale(1.04); }
+
+      .rt-card-img-placeholder {
+        width: 100%; height: 100%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 40px;
+        background: linear-gradient(135deg, var(--green-bg) 0%, #ddf0c8 100%);
+      }
+
+      .rt-badge {
+        position: absolute; top: 12px; right: 12px;
+        background: var(--green); color: var(--white);
+        font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+        padding: 4px 10px; border-radius: 100px; text-transform: uppercase;
+        box-shadow: 0 2px 12px rgba(94,158,40,0.4);
+        animation: pulse-badge 2s infinite;
+      }
+
+      @keyframes pulse-badge {
+        0%, 100% { box-shadow: 0 2px 12px rgba(94,158,40,0.4); }
+        50%       { box-shadow: 0 2px 20px rgba(94,158,40,0.7); }
+      }
+
+      .rt-card-body {
+        padding: 22px; display: flex;
+        flex-direction: column; flex: 1;
+      }
+
+      .rt-card-category {
+        font-size: 10px; font-weight: 700;
+        letter-spacing: 2.5px; text-transform: uppercase;
+        color: var(--green); margin-bottom: 8px;
+      }
+
+      .rt-card-title {
+        font-family: var(--font-head);
+        font-size: 18px; color: var(--navy);
+        line-height: 1.2; margin-bottom: 8px;
+      }
+
+      .rt-card-desc {
+        font-size: 13px; color: var(--grey);
+        line-height: 1.6; flex: 1; margin-bottom: 16px;
+      }
+
+      .rt-card-link {
+        display: inline-flex; align-items: center; gap: 5px;
+        font-size: 12px; font-weight: 600; color: var(--green);
+        text-decoration: none; background: none; border: none;
+        cursor: pointer; padding: 0; font-family: var(--font-body);
+        transition: gap 0.2s ease;
+      }
+
+      .rt-card-link:hover { gap: 9px; }
+      .rt-card-link::after { content: '→'; font-size: 14px; }
+
+      /* ── Modales ── */
+      .rt-modal-overlay {
+        display: none; position: fixed; inset: 0;
+        background: rgba(27,43,69,0.6);
+        backdrop-filter: blur(4px);
+        z-index: 9000; align-items: center;
+        justify-content: center; padding: 24px;
+        animation: rt-fade-in 0.25s ease;
+      }
+
+      .rt-modal-overlay.active { display: flex; }
+
+      @keyframes rt-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+      .rt-modal {
+        background: var(--white); border-radius: 16px;
+        max-width: 920px; width: 100%; max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 24px 80px rgba(27,43,69,0.25);
+        animation: rt-slide-up 0.3s ease;
+        scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+      }
+
+      @keyframes rt-slide-up {
+        from { transform: translateY(24px); opacity: 0; }
+        to   { transform: translateY(0);    opacity: 1; }
+      }
+
+      .rt-modal-hero {
+        position: relative; height: 220px; overflow: hidden;
+        border-radius: 16px 16px 0 0;
+      }
+
+      .rt-modal-hero-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to right, rgba(27,43,69,0.85) 0%, rgba(27,43,69,0.2) 100%);
+        display: flex; flex-direction: column;
+        justify-content: flex-end; padding: 32px;
+      }
+
+      .rt-modal-hero-tag {
+        font-size: 11px; font-weight: 700;
+        letter-spacing: 3px; text-transform: uppercase;
+        color: rgba(255,255,255,0.7); margin-bottom: 8px;
+      }
+
+      .rt-modal-hero-title {
+        font-family: var(--font-head);
+        font-size: 32px; color: #FFFFFF; line-height: 1.1;
+      }
+
+      .rt-modal-close {
+        position: absolute; top: 20px; right: 20px;
+        width: 36px; height: 36px; border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #FFFFFF; font-size: 18px; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.2s; backdrop-filter: blur(4px);
+      }
+
+      .rt-modal-close:hover { background: rgba(255,255,255,0.3); }
+
+      .rt-modal-content { padding: 40px; }
+
+      /* 3 columnas para DROPS */
+      .rt-modal-3col {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px; margin-bottom: 36px;
+      }
+
+      .rt-col-block {
+        background: var(--green-bg); border-radius: var(--radius);
+        border-top: 4px solid var(--green); padding: 24px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      }
+
+      .rt-col-label {
+        font-size: 10px; font-weight: 700;
+        letter-spacing: 2px; text-transform: uppercase;
+        color: var(--green); margin-bottom: 12px;
+      }
+
+      .rt-col-text { font-size: 14px; color: var(--navy); line-height: 1.65; }
+      .rt-col-text strong {
+        color: var(--navy); font-weight: 700;
+        display: block; font-size: 16px; margin-bottom: 6px;
+      }
+
+      .rt-btn-primary {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--green); color: #FFFFFF;
+        font-family: var(--font-body); font-size: 14px; font-weight: 700;
+        padding: 13px 26px; border-radius: 8px; border: none;
+        cursor: pointer; text-decoration: none; margin-top: 16px;
+        transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 16px rgba(94,158,40,0.35);
+      }
+
+      .rt-btn-primary:hover {
+        background: #4d8620; transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(94,158,40,0.45);
+      }
+
+      .rt-modal-benefits {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px; margin-bottom: 32px;
+      }
+
+      .rt-benefit-card {
+        background: var(--green-bg); border-radius: var(--radius);
+        border-top: 4px solid var(--green); padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      }
+
+      .rt-benefit-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+      .rt-benefit-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
+      .rt-benefit-text  { font-size: 13px; color: var(--navy); line-height: 1.55; }
+
+      .rt-modal-desc {
+        font-size: 15px; color: var(--grey);
+        line-height: 1.7; margin-bottom: 28px;
+      }
+
+      .rt-modal-section-title {
+        font-family: var(--font-head); font-size: 20px;
+        color: var(--navy); margin-bottom: 20px;
+        padding-bottom: 10px; border-bottom: 2px solid var(--border);
+      }
+
+      /* Responsive */
+      @media (max-width: 1100px) {
+        .rt-grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      @media (max-width: 700px) {
+        .rt-grid { grid-template-columns: repeat(2, 1fr); }
+        .rt-modal-3col { grid-template-columns: 1fr; }
+        #retail-section { padding: 60px 20px; }
+        .rt-modal-content { padding: 24px; }
+      }
+      @media (max-width: 480px) {
+        .rt-grid { grid-template-columns: 1fr; }
+      }
+
+      #hero {
+        position: relative;
+        width: 100%;
+        height: 480px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hero-h1 {
+        font-family: 'DM Serif Display', Georgia, serif;
+        font-size: clamp(28px, 4vw, 52px);
+        color: #FFFFFF;
+      }
+
+      .hero-p {
+        font-size: 16px;
+        color: rgba(255,255,255,0.9);
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.45);
+        z-index: 1;
+      }
+
+      .hero-accent {
+        color: #7ec832;
+        display: block;
+      }
+
+      .navbar {
+        margin: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+
+      .stats-band {
+        margin: 0 !important;
+      }
+
+      body, main, .wrapper, #app, #root {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+    </style>
+
+    <section id="retail-section">
+      <div class="rt-container">
+        <div class="rt-header">
+          <span class="rt-eyebrow">Canal Retail</span>
+          <h2 class="rt-title">Soluciones diseñadas para el lineal de hoy</h2>
+          <p class="rt-subtitle">Desde el suministro masivo hasta la innovación en formato. Cubrimos cada segmento con propuestas que venden.</p>
+        </div>
+
+        <div class="rt-grid">
+          <!-- 1: Commodities -->
+          <div class="rt-card">
+            <div class="rt-card-img-wrap">
+              <div class="rt-card-img-placeholder">🍄</div>
+            </div>
+            <div class="rt-card-body">
+              <span class="rt-card-category">Volumen</span>
+              <h3 class="rt-card-title">Commodities</h3>
+              <p class="rt-card-desc">Motor de tu lineal. Suministro masivo 365 días. Fill Rate 99%.</p>
+              <button class="rt-card-link" onclick="rtOpenModal('modal-commodities')">See full solution</button>
+            </div>
+          </div>
+
+          <!-- 2: Laminadas -->
+          <div class="rt-card">
+            <div class="rt-card-img-wrap">
+              <div class="rt-card-img-placeholder">🥗</div>
+            </div>
+            <div class="rt-card-body">
+              <span class="rt-card-category">Gourmet</span>
+              <h3 class="rt-card-title">Laminadas & Mixes</h3>
+              <p class="rt-card-desc">Mezclas Gourmet. Variedad en un solo pack. Envasado MAP.</p>
+              <button class="rt-card-link" onclick="rtOpenModal('modal-laminadas')">See full solution</button>
+            </div>
+          </div>
+
+          <!-- 3: IV Gama -->
+          <div class="rt-card">
+            <div class="rt-card-img-wrap">
+              <div class="rt-card-img-placeholder">🌿</div>
+            </div>
+            <div class="rt-card-body">
+              <span class="rt-card-category">Convenience</span>
+              <h3 class="rt-card-title">IV Gama</h3>
+              <p class="rt-card-desc">Ready to eat. Limpio, cortado, lavado. Sin merma en sala.</p>
+              <button class="rt-card-link" onclick="rtOpenModal('modal-ivgama')">See full solution</button>
+            </div>
+          </div>
+
+          <!-- 4: DROPS -->
+          <div class="rt-card">
+            <div class="rt-card-img-wrap">
+              <div class="rt-card-img-placeholder">⭐</div>
+              <span class="rt-badge">★ NEW</span>
+            </div>
+            <div class="rt-card-body">
+              <span class="rt-card-category">Innovación</span>
+              <h3 class="rt-card-title">DROPS — Ready to Cook</h3>
+              <p class="rt-card-desc">Ready to Cook. Innovación para Airfryer. Sube el ticket medio.</p>
+              <button class="rt-card-link" onclick="rtOpenModal('modal-drops')">See full solution</button>
+            </div>
+          </div>
+
+          <!-- 5: VMI -->
+          <div class="rt-card">
+            <div class="rt-card-img-wrap">
+              <div class="rt-card-img-placeholder">📦</div>
+            </div>
+            <div class="rt-card-body">
+              <span class="rt-card-category">Gestión</span>
+              <h3 class="rt-card-title">VMI</h3>
+              <p class="rt-card-desc">Gestión VMI. Controlamos tu stock y merma. Eficiencia total.</p>
+              <button class="rt-card-link" onclick="rtOpenModal('modal-vmi')">See full solution</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ MODALES ══════════════════════════════════════════════════ -->
+
+    <!-- DROPS -->
+    <div class="rt-modal-overlay" id="modal-drops">
+      <div class="rt-modal">
+        <div class="rt-modal-hero">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2B45,#2d5a10);display:flex;align-items:center;justify-content:center;font-size:72px;">⭐</div>
+          <div class="rt-modal-hero-overlay">
+            <span class="rt-modal-hero-tag">Innovación · Retail</span>
+            <h2 class="rt-modal-hero-title">DROPS — Ready to Cook</h2>
+          </div>
+          <button class="rt-modal-close" onclick="rtCloseModal('modal-drops')">✕</button>
+        </div>
+        <div class="rt-modal-content">
+          <div class="rt-modal-3col">
+            <div class="rt-col-block">
+              <div class="rt-col-label">What is it</div>
+              <p class="rt-col-text">Lanzamientos bimensuales de formatos Ready to Cook pensados para Airfryer. Cada DROP tiene un formato único, packaging diferencial y ventana de venta acotada que genera urgencia de compra.</p>
+            </div>
+            <div class="rt-col-block">
+              <div class="rt-col-label">Who is it for</div>
+              <p class="rt-col-text">Cadenas que buscan <strong>dinamizar el lineal</strong> con novedades de alto impacto sin riesgo de largo plazo. Ideal para salir del commodity y entrar en el segmento premium convenience.</p>
+            </div>
+            <div class="rt-col-block">
+              <div class="rt-col-label">Result</div>
+              <p class="rt-col-text"><strong>+25% ticket medio estimado</strong>Incremento de rotación en semana de lanzamiento. Cobertura mediática integrada. Repetición de compra por coleccionabilidad del formato.</p>
+              <button class="rt-btn-primary" onclick="alert('Enlaza aquí tu catálogo')">Ver Formatos y Catálogo →</button>
+            </div>
+          </div>
+          <div class="rt-modal-section-title">Beneficios para tu lineal</div>
+          <div class="rt-modal-benefits">
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🎯</span><div class="rt-benefit-title">Urgencia de compra</div><p class="rt-benefit-text">Ediciones limitadas bimensuales que activan al consumidor impulsivo.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">📈</span><div class="rt-benefit-title">Ticket medio</div><p class="rt-benefit-text">Formatos premium que elevan el valor medio del carro.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">♻️</span><div class="rt-benefit-title">0 riesgo de stock</div><p class="rt-benefit-text">Planificación cerrada con el comprador. Ni exceso ni rotura.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🔥</span><div class="rt-benefit-title">Airfryer ready</div><p class="rt-benefit-text">100% adaptado al electrodoméstico más creciente de España.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commodities -->
+    <div class="rt-modal-overlay" id="modal-commodities">
+      <div class="rt-modal">
+        <div class="rt-modal-hero">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2B45,#3a5a25);display:flex;align-items:center;justify-content:center;font-size:72px;">🍄</div>
+          <div class="rt-modal-hero-overlay">
+            <span class="rt-modal-hero-tag">Volumen · 365 días</span>
+            <h2 class="rt-modal-hero-title">Commodities</h2>
+          </div>
+          <button class="rt-modal-close" onclick="rtCloseModal('modal-commodities')">✕</button>
+        </div>
+        <div class="rt-modal-content">
+          <p class="rt-modal-desc">Motor del lineal de setas en España. Suministro continuo de champiñón, portobello y pleurotus con fill rate garantizado del 99%, logística integrada y trazabilidad completa.</p>
+          <div class="rt-modal-section-title">Beneficios clave</div>
+          <div class="rt-modal-benefits">
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">📅</span><div class="rt-benefit-title">365 días</div><p class="rt-benefit-text">Sin interrupciones estacionales. Tu lineal siempre lleno.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">✅</span><div class="rt-benefit-title">Fill Rate 99%</div><p class="rt-benefit-text">KPI auditado. Máxima fiabilidad operativa.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🚚</span><div class="rt-benefit-title">Logística integrada</div><p class="rt-benefit-text">Desde origen hasta plataforma. Sin intermediarios.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🌍</span><div class="rt-benefit-title">Trazabilidad</div><p class="rt-benefit-text">Origen certificado. Cumplimiento normativo garantizado.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Laminadas -->
+    <div class="rt-modal-overlay" id="modal-laminadas">
+      <div class="rt-modal">
+        <div class="rt-modal-hero">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2B45,#4a7a20);display:flex;align-items:center;justify-content:center;font-size:72px;">🥗</div>
+          <div class="rt-modal-hero-overlay">
+            <span class="rt-modal-hero-tag">Gourmet · MAP</span>
+            <h2 class="rt-modal-hero-title">Laminadas & Mixes</h2>
+          </div>
+          <button class="rt-modal-close" onclick="rtCloseModal('modal-laminadas')">✕</button>
+        </div>
+        <div class="rt-modal-content">
+          <p class="rt-modal-desc">Mezclas gourmet de setas laminadas y hongos seleccionados en envasado MAP de alta barrera. Una referencia que concentra variedad, valor y margen.</p>
+          <div class="rt-modal-section-title">Propuesta de valor</div>
+          <div class="rt-modal-benefits">
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🍳</span><div class="rt-benefit-title">Variedad en un pack</div><p class="rt-benefit-text">Shiitake, portobello y pleurotus. Experiencia gourmet accesible.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🏷️</span><div class="rt-benefit-title">Envasado MAP</div><p class="rt-benefit-text">Mayor vida útil. Menos merma. Mejor imagen en lineal.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">💰</span><div class="rt-benefit-title">Margen superior</div><p class="rt-benefit-text">Formato premium que justifica precio por encima del commodity.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IV Gama -->
+    <div class="rt-modal-overlay" id="modal-ivgama">
+      <div class="rt-modal">
+        <div class="rt-modal-hero">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2B45,#2e6b18);display:flex;align-items:center;justify-content:center;font-size:72px;">🌿</div>
+          <div class="rt-modal-hero-overlay">
+            <span class="rt-modal-hero-tag">Convenience · IV Gama</span>
+            <h2 class="rt-modal-hero-title">IV Gama</h2>
+          </div>
+          <button class="rt-modal-close" onclick="rtCloseModal('modal-ivgama')">✕</button>
+        </div>
+        <div class="rt-modal-content">
+          <p class="rt-modal-desc">Setas limpias, cortadas y listas para cocinar. Sin tierra, sin merma en sala, con vida útil extendida. La respuesta al shopper que valora su tiempo y no renuncia al producto fresco.</p>
+          <div class="rt-modal-section-title">Por qué IV Gama</div>
+          <div class="rt-modal-benefits">
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">⏱️</span><div class="rt-benefit-title">Zero prep</div><p class="rt-benefit-text">Directo del pack a la sartén. Sin pasos previos.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🏪</span><div class="rt-benefit-title">0 merma en sala</div><p class="rt-benefit-text">Formato sellado. El lineal siempre perfecto.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">📦</span><div class="rt-benefit-title">Shelf life optimizado</div><p class="rt-benefit-text">Vida útil extendida sin conservantes.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VMI -->
+    <div class="rt-modal-overlay" id="modal-vmi">
+      <div class="rt-modal">
+        <div class="rt-modal-hero">
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,#1B2B45,#1a4a2e);display:flex;align-items:center;justify-content:center;font-size:72px;">📦</div>
+          <div class="rt-modal-hero-overlay">
+            <span class="rt-modal-hero-tag">Operaciones · VMI</span>
+            <h2 class="rt-modal-hero-title">Vendor Managed Inventory</h2>
+          </div>
+          <button class="rt-modal-close" onclick="rtCloseModal('modal-vmi')">✕</button>
+        </div>
+        <div class="rt-modal-content">
+          <p class="rt-modal-desc">Delegas la gestión del stock en nosotros. Analizamos tus datos de venta, controlamos los niveles de inventario y lanzamos los pedidos antes de que detectes la necesidad.</p>
+          <div class="rt-modal-section-title">Eficiencia operativa</div>
+          <div class="rt-modal-benefits">
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">📊</span><div class="rt-benefit-title">Data-driven</div><p class="rt-benefit-text">Decisiones basadas en tu histórico de ventas, no en intuición.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🗑️</span><div class="rt-benefit-title">Merma controlada</div><p class="rt-benefit-text">Reducción demostrada desde el primer mes.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🤝</span><div class="rt-benefit-title">Partnership real</div><p class="rt-benefit-text">Tu comprador no persigue pedidos. Nosotros los anticipamos.</p></div>
+            <div class="rt-benefit-card"><span class="rt-benefit-icon">🔄</span><div class="rt-benefit-title">Reposición automática</div><p class="rt-benefit-text">Integrado con tus plataformas logísticas.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── JS ── -->
+    <script>
+      function rtOpenModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function rtCloseModal(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.rt-modal-overlay').forEach(o => {
+        o.addEventListener('click', e => { if (e.target === o) rtCloseModal(o.id); });
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.rt-modal-overlay.active')
+            .forEach(o => rtCloseModal(o.id));
+        }
+      });
+    </script>
+
+    <!-- React (opción A) -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
