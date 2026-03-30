@@ -9,8 +9,8 @@ const translations: Record<Language, Record<string, string>> = {
   es: {
     'nav.back': 'Inicio', 'nav.qs': 'Quiénes somos',
     'hero.badge': 'Productores directos · Sin intermediarios',
-    'hero.h1a': 'Suministro Directo.',
-    'hero.h1b': 'Especialistas en Producto.',
+    'hero.h1a': 'Líderes en Cultivo y Recolección Directa.',
+    'hero.h1b': 'Suministro Total. Sin Intermediarios. Sin Roturas.',
     'hero.sub': 'Maximizamos el margen de Retail y Foodservice con un <strong>Fill Rate del 99%</strong>.<br>Desde nuestras plantas logísticas en Europa hasta su cocina o lineal.',
     'hero.cta': 'Retail o Foodservice',
     'stats.eyebrow': 'NUESTRO MÚSCULO EN DATOS CLAVE',
@@ -118,13 +118,12 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.segment.ind': 'Industria',
     'fs.hero.em': 'Cadena de suministro blindada',
     'fs.hero.span': 'en Foodservice e Industria.',
-    'hero.p': 'Lideramos el mercado con nuevos conceptos y formatos que dinamizan el consumo en Retail y Foodservice eliminando el riesgo en tu operativa.',
   },
   en: {
     'nav.back': 'Home', 'nav.qs': 'About us',
     'hero.badge': 'Direct producers · No middlemen',
-    'hero.h1a': 'Direct Supply.',
-    'hero.h1b': 'Product Specialists.',
+    'hero.h1a': 'Mushrooms Direct from the Producer.',
+    'hero.h1b': 'Zero Middlemen. Zero Stockouts.',
     'hero.sub': 'We protect your margin and guarantee your supply. From our own cultivation and direct import, to your logistics platform.',
     'hero.cta': 'Retail or Foodservice',
     'stats.eyebrow': 'OUR STRENGTH IN KEY FIGURES',
@@ -225,13 +224,12 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.segment.ind': 'Industry',
     'fs.hero.em': 'Resilient supply chain',
     'fs.hero.span': 'for Foodservice & Industry.',
-    'hero.p': 'We lead the market with new concepts and formats that boost consumption in Retail and Foodservice, eliminating operational risk.',
   },
   nl: {
     'nav.back': 'Begin', 'nav.qs': 'Wie zijn wij',
     'hero.badge': 'Directe producenten · Geen tussenpersonen',
-    'hero.h1a': 'Directe Levering.',
-    'hero.h1b': 'Productspecialisten.',
+    'hero.h1a': 'Paddenstoelen Direct van de Producent.',
+    'hero.h1b': 'Nul Tussenpersonen. Nul Stockbreuken.',
     'hero.sub': 'Wij beschermen uw marge en garanderen uw levering. Van onze eigen kweek en directe import tot uw logistiek platform.',
     'hero.cta': 'Retail of Foodservice',
     'stats.eyebrow': 'ONZE KRACHT IN CIJFERS',
@@ -332,13 +330,12 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.segment.ind': 'Industrie',
     'fs.hero.em': 'Beveiligde supply chain',
     'fs.hero.span': 'voor Foodservice & Industrie.',
-    'hero.p': 'Wij leiden de markt met nieuwe concepten en formaten die de consumptie in Retail en Foodservice stimuleren en het operationele risico elimineren.',
   },
   fr: {
     'nav.back': 'Accueil', 'nav.qs': 'Qui sommes-nous',
     'hero.badge': 'Producteurs directs · Sans intermédiaires',
-    'hero.h1a': 'Approvisionnement Direct.',
-    'hero.h1b': 'Spécialistes Produit.',
+    'hero.h1a': 'Champignons Directs du Producteur.',
+    'hero.h1b': 'Zéro Intermédiaires. Zéro Ruptures.',
     'hero.sub': "Nous protégeons votre marge et garantissons votre approvisionnement. De nos cultures et importation directe jusqu'à votre plateforme logistique.",
     'hero.cta': 'Retail ou Foodservice',
     'stats.eyebrow': 'NOTRE FORCE EN CHIFFRES CLÉS',
@@ -439,7 +436,6 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.segment.ind': 'Industrie',
     'fs.hero.em': 'Chaîne d\'approvisionnement sécurisée',
     'fs.hero.span': 'pour Foodservice & Industrie.',
-    'hero.p': 'Nous menons le marché avec de nouveaux concepts et formats qui dynamisent la consommation en Retail et Foodservice en éliminant le risque opérationnel.',
   },
 };
 
@@ -1031,11 +1027,11 @@ function App() {
           <div className="hero-overlay"></div>
           <div className="hero-content">
             <h1 className="hero-h1">
-              {t('hero.h1a')}<br />
-              <span className="hero-accent">{t('hero.h1b')}</span>
+              Suministro Directo.<br />
+              <span className="hero-accent">Especialistas en Producto.</span>
             </h1>
             <p className="hero-p">
-              {t('hero.p')}
+              Lideramos el mercado con nuevos conceptos y formatos que dinamizan el consumo en Retail y Foodservice eliminando el riesgo en tu operativa.
             </p>
             <a
               href="#tabs"

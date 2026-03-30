@@ -1,0 +1,228 @@
+/* Mobile & small tablet — loaded after index.css; wins over scattered !important rules */
+
+html {
+  overflow-x: hidden;
+}
+
+@media (max-width: 900px) {
+  .wrap.nav {
+    min-height: 0 !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .navbar {
+    height: auto !important;
+    min-height: 0 !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 10px 0 !important;
+  }
+
+  .navbar-logos-left {
+    flex: 1 1 100%;
+    justify-content: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .navbar-logos-left .nav-logo,
+  .navbar-logos-left img {
+    height: 32px !important;
+    width: auto !important;
+    max-height: 36px !important;
+  }
+
+  .navbar-logos-left img[alt="FME Group"] {
+    height: 40px !important;
+    max-height: 44px !important;
+  }
+
+  .navbar-right {
+    flex: 1 1 100%;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .navbar-certs .nav-cert-logo,
+  .navbar-certs img {
+    height: 24px !important;
+    max-height: 26px !important;
+  }
+
+  .nav-divider-vertical {
+    display: none !important;
+  }
+
+  .nav-langs {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .nav-lang {
+    padding: 4px 6px !important;
+    font-size: 11px !important;
+  }
+
+  #hero {
+    height: auto !important;
+    min-height: 300px !important;
+    padding: 4.5rem 1rem 2.5rem !important;
+    align-items: center !important;
+  }
+
+  .hero-content {
+    max-width: 100% !important;
+    padding: 0 12px !important;
+  }
+
+  .hero-content::before {
+    inset: -40px -24px !important;
+  }
+
+  .hero-h1 {
+    font-size: clamp(22px, 6vw, 34px) !important;
+  }
+
+  .hero-p {
+    font-size: 14px !important;
+  }
+
+  .hero-cta {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+
+  .btn-inicio {
+    bottom: 16px !important;
+    right: 12px !important;
+    left: auto !important;
+    padding: 8px 14px !important;
+    font-size: 11px !important;
+  }
+
+  .stats-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px 8px !important;
+    justify-items: center !important;
+  }
+
+  .stats-row .stat-sep {
+    display: none !important;
+  }
+
+  .stats-row .stat {
+    min-width: 0 !important;
+  }
+
+  .tab-btns {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+
+  .tab-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    border-radius: 12px !important;
+    margin-left: 0 !important;
+    top: 0 !important;
+    border-bottom: 1.5px solid var(--border) !important;
+  }
+
+  .tab-btn + .tab-btn {
+    margin-left: 0 !important;
+    margin-top: 8px !important;
+  }
+
+  .tab-btn.active {
+    border-bottom: 2px solid var(--border) !important;
+  }
+
+  .tab-panels-wrap {
+    border-radius: 12px !important;
+  }
+
+  .solution-grid,
+  .fs-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card-kicker {
+    white-space: normal !important;
+  }
+
+  .section-confirm h2 {
+    font-size: clamp(1.15rem, 4.5vw, 1.45rem) !important;
+  }
+
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 12px !important;
+  }
+
+  .section-confirm.foodservice-hero h2.foodservice-hero-title {
+    font-size: clamp(1rem, 4.2vw, 1.28rem) !important;
+    padding: 0 4px !important;
+  }
+
+  .section-confirm.foodservice-hero p.foodservice-hero-subtitle {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0 8px !important;
+  }
+
+  .section-confirm.foodservice-hero .foodservice-hero-sectors {
+    display: inline !important;
+  }
+
+  .section-confirm.foodservice-hero .foodservice-bar {
+    padding: 0 0.28rem !important;
+  }
+
+  .tech-modal {
+    width: min(860px, 100vw) !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    padding: 0.85rem !important;
+  }
+
+  .tech-table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -4px;
+  }
+
+  .tech-table {
+    font-size: 0.75rem !important;
+  }
+
+  .tech-table th,
+  .tech-table td {
+    padding: 0.4rem !important;
+  }
+
+  .back-top {
+    top: auto !important;
+    bottom: 88px !important;
+    left: 12px !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .trust-grid img {
+    max-height: 26px !important;
+  }
+
+  .stat strong {
+    font-size: 1.35rem !important;
+  }
+}
