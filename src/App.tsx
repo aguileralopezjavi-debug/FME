@@ -157,6 +157,19 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Código',
     'tc.vmi.col3': 'Formato',
     'tc.vmi.col4': 'Detalle',
+    'nav.inicio': 'INICIO',
+    'ft.es.title': 'España',
+    'ft.es.att': 'Atención comercial ES',
+    'ft.es.loc': 'La Rioja · Lleida · Madrid',
+    'ft.es.addr': 'Av. Logística 101, 26007 Logroño (Demo)',
+    'ft.nl.title': 'Países Bajos / Bélgica',
+    'ft.nl.att': 'Atención comercial NL/BE',
+    'ft.nl.loc': 'Hub logístico Nederland',
+    'ft.nl.addr': 'Stationsweg 22, 3013 AJ Rotterdam (Demo)',
+    'ft.fr.title': 'Francia',
+    'ft.fr.att': 'Atención comercial FR',
+    'ft.fr.loc': 'Cobertura nacional',
+    'ft.fr.addr': '12 Rue du Marché, 69002 Lyon (Demo)',
   },
   en: {
     'nav.back': 'Home', 'nav.qs': 'About us',
@@ -302,6 +315,19 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Code',
     'tc.vmi.col3': 'Format',
     'tc.vmi.col4': 'Detail',
+    'nav.inicio': 'HOME',
+    'ft.es.title': 'Spain',
+    'ft.es.att': 'Commercial enquiries ES',
+    'ft.es.loc': 'La Rioja · Lleida · Madrid',
+    'ft.es.addr': 'Av. Logística 101, 26007 Logroño (Demo)',
+    'ft.nl.title': 'Netherlands / Belgium',
+    'ft.nl.att': 'Commercial enquiries NL/BE',
+    'ft.nl.loc': 'Netherlands logistics hub',
+    'ft.nl.addr': 'Stationsweg 22, 3013 AJ Rotterdam (Demo)',
+    'ft.fr.title': 'France',
+    'ft.fr.att': 'Commercial enquiries FR',
+    'ft.fr.loc': 'National coverage',
+    'ft.fr.addr': '12 Rue du Marché, 69002 Lyon (Demo)',
   },
   nl: {
     'nav.back': 'Begin', 'nav.qs': 'Wie zijn wij',
@@ -447,6 +473,19 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Code',
     'tc.vmi.col3': 'Formaat',
     'tc.vmi.col4': 'Detail',
+    'nav.inicio': 'HOME',
+    'ft.es.title': 'Spanje',
+    'ft.es.att': 'Commerciële vragen ES',
+    'ft.es.loc': 'La Rioja · Lleida · Madrid',
+    'ft.es.addr': 'Av. Logística 101, 26007 Logroño (Demo)',
+    'ft.nl.title': 'Nederland / België',
+    'ft.nl.att': 'Commerciële vragen NL/BE',
+    'ft.nl.loc': 'Logistiek hub Nederland',
+    'ft.nl.addr': 'Stationsweg 22, 3013 AJ Rotterdam (Demo)',
+    'ft.fr.title': 'Frankrijk',
+    'ft.fr.att': 'Commerciële vragen FR',
+    'ft.fr.loc': 'Nationale dekking',
+    'ft.fr.addr': '12 Rue du Marché, 69002 Lyon (Demo)',
   },
   fr: {
     'nav.back': 'Accueil', 'nav.qs': 'Qui sommes-nous',
@@ -592,6 +631,19 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Code',
     'tc.vmi.col3': 'Format',
     'tc.vmi.col4': 'Détail',
+    'nav.inicio': 'ACCUEIL',
+    'ft.es.title': 'Espagne',
+    'ft.es.att': 'Contact commercial ES',
+    'ft.es.loc': 'La Rioja · Lleida · Madrid',
+    'ft.es.addr': 'Av. Logística 101, 26007 Logroño (Demo)',
+    'ft.nl.title': 'Pays-Bas / Belgique',
+    'ft.nl.att': 'Contact commercial NL/BE',
+    'ft.nl.loc': 'Hub logistique Pays-Bas',
+    'ft.nl.addr': 'Stationsweg 22, 3013 AJ Rotterdam (Demo)',
+    'ft.fr.title': 'France',
+    'ft.fr.att': 'Contact commercial FR',
+    'ft.fr.loc': 'Couverture nationale',
+    'ft.fr.addr': '12 Rue du Marché, 69002 Lyon (Demo)',
   },
 };
 
@@ -1201,7 +1253,7 @@ function App() {
             </a>
           </div>
           <button className="btn-inicio" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            ↑ INICIO
+            ↑ {t('nav.inicio')}
           </button>
         </div>
       </section>
@@ -1454,30 +1506,30 @@ function App() {
         <div className="wrap">
           <div className="fg">
             <div className="fc">
-              <h5>España</h5>
+              <h5>{t('ft.es.title')}</h5>
               <ul>
                 <li><a href="mailto:espana@fmegroup.eu">espana@fmegroup.eu</a></li>
                 <li><a href="tel:+34900000000">+34 900 000 000</a></li>
-                <li>La Rioja · Lleida · Madrid</li>
-                <li>Av. Logística 101, 26007 Logroño (Demo)</li>
+                <li>{t('ft.es.loc')}</li>
+                <li>{t('ft.es.addr')}</li>
               </ul>
             </div>
             <div className="fc">
-              <h5>Países Bajos / Bélgica</h5>
+              <h5>{t('ft.nl.title')}</h5>
               <ul>
                 <li><a href="mailto:nlbe@fmegroup.eu">nlbe@fmegroup.eu</a></li>
-                <li>Atención comercial NL/BE</li>
-                <li>Hub logístico Nederland</li>
-                <li>Stationsweg 22, 3013 AJ Rotterdam (Demo)</li>
+                <li>{t('ft.nl.att')}</li>
+                <li>{t('ft.nl.loc')}</li>
+                <li>{t('ft.nl.addr')}</li>
               </ul>
             </div>
             <div className="fc">
-              <h5>Francia</h5>
+              <h5>{t('ft.fr.title')}</h5>
               <ul>
                 <li><a href="mailto:fr@fmegroup.eu">fr@fmegroup.eu</a></li>
-                <li>Atención comercial FR</li>
-                <li>Cobertura nacional</li>
-                <li>12 Rue du Marché, 69002 Lyon (Demo)</li>
+                <li>{t('ft.fr.att')}</li>
+                <li>{t('ft.fr.loc')}</li>
+                <li>{t('ft.fr.addr')}</li>
               </ul>
             </div>
           </div>
