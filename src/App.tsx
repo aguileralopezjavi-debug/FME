@@ -119,6 +119,8 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.hero.em': 'Cadena de suministro blindada',
     'fs.hero.span': 'en Foodservice e Industria.',
     'hero.p': 'Lideramos el mercado con nuevos conceptos y formatos que dinamizan el consumo en Retail y Foodservice eliminando el riesgo en tu operativa.',
+    'pc.retail.em': 'RETAIL: Rentabilidad y Suministro Blindado.',
+    'pc.retail.p': 'Optimización de stock en tiempo real y dinamización de categoría para elevar el ticket medio.',
   },
   en: {
     'nav.back': 'Home', 'nav.qs': 'About us',
@@ -226,6 +228,8 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.hero.em': 'Resilient supply chain',
     'fs.hero.span': 'for Foodservice & Industry.',
     'hero.p': 'We lead the market with new concepts and formats that boost consumption in Retail and Foodservice, eliminating operational risk.',
+    'pc.retail.em': 'RETAIL: Profitability & Secured Supply.',
+    'pc.retail.p': 'Real-time stock optimisation and category dynamism to lift average basket value.',
   },
   nl: {
     'nav.back': 'Begin', 'nav.qs': 'Wie zijn wij',
@@ -333,6 +337,8 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.hero.em': 'Beveiligde supply chain',
     'fs.hero.span': 'voor Foodservice & Industrie.',
     'hero.p': 'Wij leiden de markt met nieuwe concepten en formaten die de consumptie in Retail en Foodservice stimuleren en het operationele risico elimineren.',
+    'pc.retail.em': 'RETAIL: Rentabiliteit & Gegarandeerde Levering.',
+    'pc.retail.p': 'Realtime voorraadoptimalisatie en categoriedynamiek om de gemiddelde bonwaarde te verhogen.',
   },
   fr: {
     'nav.back': 'Accueil', 'nav.qs': 'Qui sommes-nous',
@@ -440,6 +446,8 @@ const translations: Record<Language, Record<string, string>> = {
     'fs.hero.em': 'Chaîne d\'approvisionnement sécurisée',
     'fs.hero.span': 'pour Foodservice & Industrie.',
     'hero.p': 'Nous menons le marché avec de nouveaux concepts et formats qui dynamisent la consommation en Retail et Foodservice en éliminant le risque opérationnel.',
+    'pc.retail.em': 'RETAIL: Rentabilité & Approvisionnement Sécurisé.',
+    'pc.retail.p': 'Optimisation des stocks en temps réel et dynamisation de catégorie pour augmenter le panier moyen.',
   },
 };
 
@@ -1117,9 +1125,9 @@ function App() {
                 <div className="section-confirm">
                   <span className="sc-icon">🛒</span>
                   <h2>
-                    <em>RETAIL: Rentabilidad y Suministro Blindado.</em>
+                    <em>{t('pc.retail.em')}</em>
                   </h2>
-                  <p>Optimización de stock en tiempo real y dinamización de categoría para elevar el ticket medio.</p>
+                  <p>{t('pc.retail.p')}</p>
                 </div>
 
                 <div className="solution-grid">
