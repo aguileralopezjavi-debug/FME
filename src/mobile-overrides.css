@@ -20,61 +20,66 @@ html {
     padding: 10px 0 !important;
   }
 
+  .navbar {
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    padding: 10px 12px !important;
+  }
+
   .navbar-logos-left {
-    flex: 1 1 auto !important;
+    flex: 0 0 50% !important;
+    width: 50% !important;
     justify-content: flex-start !important;
-    gap: 10px !important;
+    gap: 8px !important;
     flex-wrap: wrap !important;
+    align-items: center !important;
   }
 
   .navbar-logos-left .nav-logo,
   .navbar-logos-left img {
-    height: 32px !important;
+    height: 28px !important;
     width: auto !important;
-    max-height: 36px !important;
-  }
-
-  .navbar-logos-left img[alt="FME Group"] {
-    height: 40px !important;
-    max-height: 44px !important;
   }
 
   .navbar-right {
-    flex: 1 1 auto !important;
+    flex: 0 0 50% !important;
+    width: 50% !important;
     justify-content: flex-end !important;
     flex-wrap: wrap !important;
-    gap: 8px !important;
-  }
-
-  .navbar {
-    flex-wrap: nowrap !important;
+    gap: 6px !important;
     align-items: center !important;
+    flex-direction: column !important;
   }
 
-  .nav-link {
-    display: none !important;
+  .navbar-certs {
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .navbar-certs .nav-cert-logo,
+  .navbar-certs img {
+    height: 22px !important;
+    width: auto !important;
   }
 
   .nav-langs {
     display: flex !important;
     flex-wrap: nowrap !important;
-    justify-content: center !important;
+    justify-content: flex-end !important;
     gap: 4px !important;
-  }
-
-  .navbar-certs .nav-cert-logo,
-  .navbar-certs img {
-    height: 24px !important;
-    max-height: 26px !important;
+    width: 100% !important;
+    order: -1 !important;
   }
 
   .nav-divider-vertical {
     display: none !important;
   }
 
-  .nav-langs {
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+  .nav-link {
+    display: none !important;
   }
 
   .nav-lang {
@@ -97,7 +102,13 @@ html {
   }
 
   .hero-overlay {
-    background: rgba(255,255,255,0.82) !important;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.75) 0%,
+      rgba(255,255,255,0.88) 50%,
+      rgba(255,255,255,0.75) 100%
+    ) !important;
+    backdrop-filter: blur(2px) !important;
   }
 
   .hero-h1 {
