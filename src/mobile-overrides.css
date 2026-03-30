@@ -21,8 +21,8 @@ html {
   }
 
   .navbar-logos-left {
-    flex: 1 1 100%;
-    justify-content: center !important;
+    flex: 1 1 auto !important;
+    justify-content: flex-start !important;
     gap: 10px !important;
     flex-wrap: wrap !important;
   }
@@ -40,10 +40,23 @@ html {
   }
 
   .navbar-right {
-    flex: 1 1 100%;
-    justify-content: center !important;
+    flex: 1 1 auto !important;
+    justify-content: flex-end !important;
     flex-wrap: wrap !important;
     gap: 8px !important;
+  }
+
+  .navbar {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+  }
+
+  .nav-link {
+    display: none !important;
+  }
+
+  .nav-langs {
+    display: none !important;
   }
 
   .navbar-certs .nav-cert-logo,
@@ -68,9 +81,34 @@ html {
 
   #hero {
     height: auto !important;
-    min-height: 300px !important;
+    min-height: 380px !important;
     padding: 4.5rem 1rem 2.5rem !important;
     align-items: center !important;
+  }
+
+  .hero-bg {
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    transform: none !important;
+  }
+
+  .hero-overlay {
+    background: rgba(0,0,0,0.55) !important;
+  }
+
+  .hero-h1 {
+    color: #FFFFFF !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
+  }
+
+  .hero-accent {
+    color: #7ec832 !important;
+  }
+
+  .hero-p {
+    color: rgba(255,255,255,0.92) !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
   }
 
   .hero-content {
