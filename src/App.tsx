@@ -76,10 +76,10 @@ const translations: Record<Language, Record<string, string>> = {
     'd_vmi.w': '<strong>Olvida la gestión manual de pedidos.</strong> Mediante la integración de nuestro sistema VMI, monitorizamos tus niveles de inventario en tiempo real. No esperamos a que se genere la rotura; <strong>ejecutamos la reposición</strong> de forma proactiva basándonos en algoritmos de demanda real y flujos EDI.',
     'd_vmi.f': '<strong>Anticipación Proactiva:</strong><br/>Utilizamos análisis de históricos y picos estacionales para garantizar que el producto esté en el lineal antes de que el cliente lo busque. <strong>Fill Rate garantizado del 99%.</strong><br/><br/><strong>Eficiencia Merma Cero:</strong><br/>Ajustamos el suministro al ritmo de venta real de cada plataforma. <strong>Menos stock inmovilizado significa producto más fresco</strong> y una reducción drástica del desperdicio alimentario.',
     'd_vmi.r': '<p>Mediante la sincronización EDI diaria, dispones de una trazabilidad absoluta sobre pedidos, albaranes y niveles de stock en tiempo real.</p><p><strong>Si el producto no rota según nuestra previsión, nosotros absorbemos el coste</strong>, eliminando tu riesgo operativo y asegurando la máxima salud financiera de tu sección de frescos.</p>',
-    'd_cultivo.h': 'COMMODITIES: Músculo Agrícola y Origen.',
-    'd_cultivo.w': 'No somos un revendedor: somos el <strong>origen</strong>. Escala masiva de champiñón, portobello y pleurotus para que un Mercado Central tenga <strong>camiones diarios</strong> y la <strong>Industria</strong> disponga de materia prima constante para sus procesos, sin depender de la variabilidad del mercado secundario.',
-    'd_cultivo.f': 'Mercados Centrales, transformación y <strong>Industria</strong> que exigen volumen diario, precio estable y ausencia de quiebres en su cadena de aprovisionamiento.',
-    'd_cultivo.r': '<strong>Suministro directo sin quiebres de stock.</strong> Capacidad de respuesta para <strong>Industria</strong> y Mercados Centrales con logística de alta frecuencia.',
+    'd_cultivo.h': 'SOMOS EL ORIGEN: Suministro Directo',
+    'd_cultivo.w': '<strong>Infraestructura Agrícola Propia:</strong> No dependemos de mercados externos. Cultivamos en nuestras propias instalaciones, lo que nos permite blindar tu suministro frente a fluctuaciones del mercado.',
+    'd_cultivo.f': '<strong>Logística de Alta Frecuencia:</strong> Al ser productores, eliminamos tiempos de espera. El producto viaja directamente del cultivo a tu plataforma, garantizando <strong>+2 días de vida útil adicionales</strong> frente a la distribución tradicional.',
+    'd_cultivo.r': '<strong>Compromiso de Precio:</strong> Nuestra integración vertical nos permite ofrecer acuerdos de precio anuales, protegiendo tus márgenes de la volatilidad del sector primario.',
     'd_distrib.h': 'Control de Escandallos: Margen en el Canal.',
     'd_distrib.w': 'Para el canal de <strong>Distribución</strong>, el riesgo no es solo el precio de compra: es la variabilidad de merma, reclamaciones y rendimiento real en destino. Nuestro producto IV Gama se comporta como un activo predecible: alta rotación, gestión simplificada de residuos y rendimiento neto homogéneo.',
     'd_distrib.f': 'Distribuidores y mayoristas que buscan SKUs de frescos con margen defendible, menos incidencias operativas y clientes finales satisfechos.',
@@ -121,9 +121,9 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.p': 'Lideramos el mercado con nuevos conceptos y formatos que dinamizan el consumo en Retail y Foodservice eliminando el riesgo en tu operativa.',
     'pc.retail.em': 'RETAIL: Rentabilidad y Suministro Blindado.',
     'pc.retail.p': 'Optimización de stock en tiempo real y dinamización de categoría para elevar el ticket medio.',
-    'rl.comm.what': 'Sin intermediarios. Sin excusas.',
-    'rl.comm.for': 'CADA HORA CUENTA. EL TIEMPO ES FRESCURA.',
-    'rl.comm.result': 'CONSTANCIA ABSOLUTA. CALIDAD SIN SORPRESAS.',
+    'rl.comm.what': 'Infraestructura Agrícola Propia',
+    'rl.comm.for': 'Logística de Alta Frecuencia',
+    'rl.comm.result': 'Compromiso de Precio',
     'rl.espec.what': 'Liderazgo en Cultivo Asiático: Importación Directa',
     'rl.espec.for': 'Cadena de Suministro Global: Setas Silvestres sin fronteras',
     'rl.espec.result': 'Especialistas en lo Imposible: El catálogo Fungi definitivo',
@@ -134,7 +134,7 @@ const translations: Record<Language, Record<string, string>> = {
     'rl.vmi.for': 'Los Pilares Operativos',
     'rl.vmi.result': 'Sincronización y KPI.',
     'tc.comm.title': 'Catálogo Retail: Commodities',
-    'tc.comm.button': 'Nuestros productos base: formatos y gramajes',
+    'tc.comm.button': 'Nuestro catálogo commodities',
     'tc.comm.col1': 'Producto',
     'tc.comm.col2': 'Tipo de envase',
     'tc.comm.col3': 'Formatos disponibles',
@@ -157,6 +157,7 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Código',
     'tc.vmi.col3': 'Formato',
     'tc.vmi.col4': 'Detalle',
+    'tc.cultivo.button': 'Nuestro catálogo commodities',
     'nav.inicio': 'INICIO',
     'ft.es.title': 'España',
     'ft.es.att': 'Atención comercial ES',
@@ -239,10 +240,10 @@ const translations: Record<Language, Record<string, string>> = {
     'd_vmi.w': '<strong>Forget manual order management.</strong> Through our VMI system integration, we monitor your inventory levels in real time. We do not wait for a stockout; <strong>we execute replenishment</strong> proactively based on real demand algorithms and EDI flows.',
     'd_vmi.f': '<strong>Proactive Anticipation:</strong><br/>We use historical analysis and seasonal peaks to guarantee product is on the shelf before the customer looks for it. <strong>Guaranteed 99% Fill Rate.</strong><br/><br/><strong>Zero Shrinkage Efficiency:</strong><br/>We adjust supply to the real sales pace of each platform. <strong>Less immobilised stock means fresher product</strong> and a drastic reduction in food waste.',
     'd_vmi.r': '<p>Through daily EDI synchronisation, you have absolute traceability over orders, delivery notes and stock levels in real time.</p><p><strong>If the product does not rotate as per our forecast, we absorb the cost</strong>, eliminating your operational risk and ensuring maximum financial health of your fresh section.</p>',
-    'd_cultivo.h': 'COMMODITIES: Agricultural Muscle at Source.',
-    'd_cultivo.w': 'We are not a reseller: we are the <strong>source</strong>. Mass-scale button, portobello and oyster supply so wholesale markets get <strong>daily trucks</strong> and <strong>Industry</strong> gets consistent raw material for processing—without secondary-market variability.',
-    'd_cultivo.f': 'Central markets, manufacturing and <strong>Industry</strong> that need daily volume, stable pricing and zero supply breaks.',
-    'd_cultivo.r': '<strong>Direct supply without stockouts.</strong> Response capacity for <strong>Industry</strong> and wholesale markets with high-frequency logistics.',
+    'd_cultivo.h': 'WE ARE THE SOURCE: Direct Supply',
+    'd_cultivo.w': '<strong>Own Agricultural Infrastructure:</strong> We do not depend on external markets. We cultivate in our own facilities, securing your supply against market fluctuations.',
+    'd_cultivo.f': '<strong>High-Frequency Logistics:</strong> As producers, we eliminate waiting times. Product travels directly from cultivation to your platform, guaranteeing <strong>+2 extra days of shelf life</strong> vs traditional distribution.',
+    'd_cultivo.r': '<strong>Price Commitment:</strong> Our vertical integration allows us to offer annual price agreements, protecting your margins from primary sector volatility.',
     'd_distrib.h': 'Recipe Cost Control: Margin in the Channel.',
     'd_distrib.w': 'For the <strong>Distribution</strong> channel, risk is not just buy price: it is variability in shrinkage, claims and real yield downstream. Our professional IV Gama behaves like a predictable asset: high rotation, simpler waste handling and homogeneous net performance.',
     'd_distrib.f': 'Distributors and wholesalers seeking defendable margin on fresh SKUs, fewer operational incidents and satisfied end customers.',
@@ -282,9 +283,9 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.p': 'We lead the market with new concepts and formats that boost consumption in Retail and Foodservice, eliminating operational risk.',
     'pc.retail.em': 'RETAIL: Profitability & Secured Supply.',
     'pc.retail.p': 'Real-time stock optimisation and category dynamism to lift average basket value.',
-    'rl.comm.what': 'No middlemen. No excuses.',
-    'rl.comm.for': 'EVERY HOUR COUNTS. TIME IS FRESHNESS.',
-    'rl.comm.result': 'ABSOLUTE CONSISTENCY. QUALITY WITHOUT SURPRISES.',
+    'rl.comm.what': 'Own Agricultural Infrastructure',
+    'rl.comm.for': 'High-Frequency Logistics',
+    'rl.comm.result': 'Price Commitment',
     'rl.espec.what': 'Asian Cultivation Leadership: Direct Import',
     'rl.espec.for': 'Global Supply Chain: Wild Mushrooms without borders',
     'rl.espec.result': 'Specialists in the Impossible: The definitive Fungi catalogue',
@@ -295,7 +296,7 @@ const translations: Record<Language, Record<string, string>> = {
     'rl.vmi.for': 'The Operational Pillars',
     'rl.vmi.result': 'Synchronisation and KPIs.',
     'tc.comm.title': 'Retail Catalogue: Commodities',
-    'tc.comm.button': 'Our base products: formats and weights',
+    'tc.comm.button': 'Our commodities catalogue',
     'tc.comm.col1': 'Product',
     'tc.comm.col2': 'Packaging type',
     'tc.comm.col3': 'Available formats',
@@ -318,6 +319,7 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Code',
     'tc.vmi.col3': 'Format',
     'tc.vmi.col4': 'Detail',
+    'tc.cultivo.button': 'Our commodities catalogue',
     'nav.inicio': 'HOME',
     'ft.es.title': 'Spain',
     'ft.es.att': 'Commercial enquiries ES',
@@ -400,10 +402,10 @@ const translations: Record<Language, Record<string, string>> = {
     'd_vmi.w': '<strong>Vergeet handmatig orderbeheer.</strong> Via de integratie van ons VMI-systeem monitoren wij uw voorraadniveaus in realtime. Wij wachten niet tot een stockbreuk optreedt; <strong>wij voeren de aanvulling</strong> proactief uit op basis van algoritmen voor werkelijke vraag en EDI-stromen.',
     'd_vmi.f': '<strong>Proactieve Anticipatie:</strong><br/>Wij gebruiken historische analyses en seizoenspieken om te garanderen dat het product in het schap staat voordat de klant ernaar zoekt. <strong>Gegarandeerd 99% Fill Rate.</strong><br/><br/><strong>Efficiëntie Nul Derving:</strong><br/>Wij passen het aanbod aan het werkelijke verkooptempo van elk platform aan. <strong>Minder geïmmobiliseerde voorraad betekent verser product</strong> en een drastische vermindering van voedselverspilling.',
     'd_vmi.r': '<p>Via dagelijkse EDI-synchronisatie beschikt u over absolute traceerbaarheid van bestellingen, pakbonnen en voorraadniveaus in realtime.</p><p><strong>Als het product niet roteert volgens onze prognose, absorberen wij de kosten</strong>, waardoor uw operationeel risico wordt geëlimineerd en de maximale financiële gezondheid van uw versafdeling wordt gegarandeerd.</p>',
-    'd_cultivo.h': 'COMMODITIES: Landbouwmotor aan de Bron.',
-    'd_cultivo.w': 'Geen wederverkoper: wij zijn de <strong>bron</strong>. Massale aanvoer van champignon, portobello en oesterzwam zodat centrale markten <strong>dagelijkse vrachten</strong> krijgen en <strong>Industrie</strong> constante grondstof voor verwerking heeft—zonder variatie op secundaire markten.',
-    'd_cultivo.f': 'Centrale markten, verwerking en <strong>Industrie</strong> die dagelijks volume, stabiele prijs en geen leveringsbreuken eisen.',
-    'd_cultivo.r': '<strong>Directe levering zonder voorraadbreuken.</strong> Respons voor <strong>Industrie</strong> en centrale markten met hoogfrequente logistiek.',
+    'd_cultivo.h': 'WIJ ZIJN DE BRON: Directe Levering',
+    'd_cultivo.w': '<strong>Eigen Landbouwinfrastructuur:</strong> Wij zijn niet afhankelijk van externe markten. Wij telen in onze eigen installaties, waardoor uw levering beschermd is tegen marktschommelingen.',
+    'd_cultivo.f': '<strong>Hoogfrequente Logistiek:</strong> Als producenten elimineren wij wachttijden. Het product gaat rechtstreeks van de teelt naar uw platform, met <strong>+2 extra dagen houdbaarheidsdatum</strong> vs traditionele distributie.',
+    'd_cultivo.r': '<strong>Prijscommitment:</strong> Onze verticale integratie stelt ons in staat jaarlijkse prijsovereenkomsten aan te bieden, waarmee uw marges beschermd worden.',
     'd_distrib.h': 'Escandallo- en Margeregeling in het Kanaal.',
     'd_distrib.w': 'Voor <strong>Distributie</strong> is risico niet enkel de inkoopprijs: het is variatie in shrinkage, claims en reële rendement downstream. Professionele IV Gama gedraagt zich als een voorspelbare asset: hoge rotatie, eenvoudiger afvalbeheer en homogeen nettorendement.',
     'd_distrib.f': 'Distributeurs en groothandels die verdedigbare marge op verse SKU’s, minder incidenten en tevreden eindklanten willen.',
@@ -443,9 +445,9 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.p': 'Wij leiden de markt met nieuwe concepten en formaten die de consumptie in Retail en Foodservice stimuleren en het operationele risico elimineren.',
     'pc.retail.em': 'RETAIL: Rentabiliteit & Gegarandeerde Levering.',
     'pc.retail.p': 'Realtime voorraadoptimalisatie en categoriedynamiek om de gemiddelde bonwaarde te verhogen.',
-    'rl.comm.what': 'Geen tussenpersonen. Geen excuses.',
-    'rl.comm.for': 'ELK UUR TELT. TIJD IS VERSHEID.',
-    'rl.comm.result': 'ABSOLUTE CONSISTENTIE. KWALITEIT ZONDER VERRASSINGEN.',
+    'rl.comm.what': 'Eigen Landbouwinfrastructuur',
+    'rl.comm.for': 'Hoogfrequente Logistiek',
+    'rl.comm.result': 'Prijscommitment',
     'rl.espec.what': 'Leiderschap in Aziatische Teelt: Directe Import',
     'rl.espec.for': 'Wereldwijde Toeleveringsketen: Wilde Paddenstoelen zonder grenzen',
     'rl.espec.result': 'Specialisten in het Onmogelijke: De definitieve Fungi catalogus',
@@ -456,7 +458,7 @@ const translations: Record<Language, Record<string, string>> = {
     'rl.vmi.for': 'De Operationele Pijlers',
     'rl.vmi.result': 'Synchronisatie en KPI\'s.',
     'tc.comm.title': 'Retail Catalogus: Commodities',
-    'tc.comm.button': 'Onze basisproducten: formaten en gewichten',
+    'tc.comm.button': 'Onze commodities catalogus',
     'tc.comm.col1': 'Product',
     'tc.comm.col2': 'Verpakkingstype',
     'tc.comm.col3': 'Beschikbare formaten',
@@ -479,6 +481,7 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Code',
     'tc.vmi.col3': 'Formaat',
     'tc.vmi.col4': 'Detail',
+    'tc.cultivo.button': 'Onze commodities catalogus',
     'nav.inicio': 'HOME',
     'ft.es.title': 'Spanje',
     'ft.es.att': 'Commerciële vragen ES',
@@ -561,10 +564,10 @@ const translations: Record<Language, Record<string, string>> = {
     'd_vmi.w': '<strong>Oubliez la gestion manuelle des commandes.</strong> Grâce à l\'intégration de notre système VMI, nous surveillons vos niveaux de stock en temps réel. Nous n\'attendons pas qu\'une rupture se produise ; <strong>nous exécutons le réapprovisionnement</strong> de manière proactive sur la base d\'algorithmes de demande réelle et de flux EDI.',
     'd_vmi.f': '<strong>Anticipation Proactive :</strong><br/>Nous utilisons l\'analyse des historiques et des pics saisonniers pour garantir que le produit est en rayon avant que le client ne le cherche. <strong>Taux de service garanti de 99%.</strong><br/><br/><strong>Efficacité Démarque Zéro :</strong><br/>Nous ajustons l\'approvisionnement au rythme de vente réel de chaque plateforme. <strong>Moins de stock immobilisé signifie un produit plus frais</strong> et une réduction drastique du gaspillage alimentaire.',
     'd_vmi.r': '<p>Grâce à la synchronisation EDI quotidienne, vous disposez d\'une traçabilité absolue sur les commandes, bons de livraison et niveaux de stock en temps réel.</p><p><strong>Si le produit ne tourne pas selon nos prévisions, nous absorbons le coût</strong>, éliminant votre risque opérationnel et assurant la santé financière maximale de votre rayon frais.</p>',
-    'd_cultivo.h': 'COMMODITIES: Masse Agricole à la Source.',
-    'd_cultivo.w': 'Nous ne sommes pas un revendeur : nous sommes l\'<strong>origine</strong>. Volume massif de champignon, portobello et pleurote pour que les marchés de gros aient des <strong>camions quotidiens</strong> et l\'<strong>Industrie</strong> dispose de matière première continue—sans variabilité du marché secondaire.',
-    'd_cultivo.f': 'Marchés centraux et <strong>Industrie</strong> qui exigent un volume quotidien, un prix stable et zéro rupture d\'approvisionnement.',
-    'd_cultivo.r': '<strong>Approvisionnement direct sans ruptures.</strong> Capacité de réponse pour l\'<strong>Industrie</strong> et les marchés de gros avec logistique haute fréquence.',
+    'd_cultivo.h': 'NOUS SOMMES LA SOURCE : Approvisionnement Direct',
+    'd_cultivo.w': '<strong>Infrastructure Agricole Propre :</strong> Nous ne dépendons pas des marchés externes. Nous cultivons dans nos propres installations, sécurisant votre approvisionnement contre les fluctuations du marché.',
+    'd_cultivo.f': '<strong>Logistique Haute Fréquence :</strong> En tant que producteurs, nous éliminons les délais d\'attente. Le produit voyage directement de la culture à votre plateforme, garantissant <strong>+2 jours de durée de vie supplémentaires</strong> vs la distribution traditionnelle.',
+    'd_cultivo.r': '<strong>Engagement Prix :</strong> Notre intégration verticale nous permet d\'offrir des accords de prix annuels, protégeant vos marges de la volatilité du secteur primaire.',
     'd_distrib.h': 'Contrôle des Écarts : Marge sur le Canal.',
     'd_distrib.w': 'Pour le canal de <strong>Distribution</strong>, le risque n\'est pas seulement le prix d\'achat : c\'est la variabilité de la casse, des réclamations et du rendement réel en aval. Notre IV Gama professionnelle se comporte comme un actif prévisible : forte rotation, gestion simplifiée des pertes et rendement net homogène.',
     'd_distrib.f': 'Distributeurs et grossistes qui cherchent une marge défendable sur les SKU frais, moins d\'incidents opérationnels et des clients finaux satisfaits.',
@@ -604,9 +607,9 @@ const translations: Record<Language, Record<string, string>> = {
     'hero.p': 'Nous menons le marché avec de nouveaux concepts et formats qui dynamisent la consommation en Retail et Foodservice en éliminant le risque opérationnel.',
     'pc.retail.em': 'RETAIL: Rentabilité & Approvisionnement Sécurisé.',
     'pc.retail.p': 'Optimisation des stocks en temps réel et dynamisation de catégorie pour augmenter le panier moyen.',
-    'rl.comm.what': 'Sans intermédiaires. Sans excuses.',
-    'rl.comm.for': 'CHAQUE HEURE COMPTE. LE TEMPS C\'EST LA FRAÎCHEUR.',
-    'rl.comm.result': 'CONSTANCE ABSOLUE. QUALITÉ SANS SURPRISES.',
+    'rl.comm.what': 'Infrastructure Agricole Propre',
+    'rl.comm.for': 'Logistique Haute Fréquence',
+    'rl.comm.result': 'Engagement Prix',
     'rl.espec.what': 'Leadership en Culture Asiatique : Importation Directe',
     'rl.espec.for': 'Chaîne d\'Approvisionnement Mondiale : Champignons Sauvages sans frontières',
     'rl.espec.result': 'Spécialistes de l\'Impossible : Le catalogue Fungi définitif',
@@ -617,7 +620,7 @@ const translations: Record<Language, Record<string, string>> = {
     'rl.vmi.for': 'Les Piliers Opérationnels',
     'rl.vmi.result': 'Synchronisation et KPIs.',
     'tc.comm.title': 'Catalogue Retail : Commodités',
-    'tc.comm.button': 'Nos produits de base : formats et grammages',
+    'tc.comm.button': 'Notre catalogue commodités',
     'tc.comm.col1': 'Produit',
     'tc.comm.col2': 'Type d\'emballage',
     'tc.comm.col3': 'Formats disponibles',
@@ -640,6 +643,7 @@ const translations: Record<Language, Record<string, string>> = {
     'tc.vmi.col2': 'Code',
     'tc.vmi.col3': 'Format',
     'tc.vmi.col4': 'Détail',
+    'tc.cultivo.button': 'Notre catalogue commodités',
     'nav.inicio': 'ACCUEIL',
     'ft.es.title': 'Espagne',
     'ft.es.att': 'Contact commercial ES',
@@ -822,9 +826,9 @@ function RetailDrawer({ drawerId, isOpen, onClose, t, showFormat, onPrev, onNext
             )}
             <div className="drawer-cols">
               <div className={`drawer-col ${drawerId === 'comm' ? 'drawer-col-comm' : ''}`}>
-                <div className="dc-label">{labels.what}</div>
+                {drawerId !== 'comm' && <div className="dc-label">{labels.what}</div>}
                 <div dangerouslySetInnerHTML={{__html: t(`d_${drawerId}.w`)}}></div>
-                {drawerId !== 'espec' && drawerId !== 'drops' && drawerId !== 'vmi' && (
+                {drawerId !== 'espec' && drawerId !== 'drops' && drawerId !== 'vmi' && drawerId !== 'comm' && (
                   <div className="drawer-cert-logos">
                     {certLogos.map((logo) => (
                       <img key={`${drawerId}-${logo}`} src={logo} alt="Certificación" className="drawer-cert-logo" />
@@ -833,11 +837,11 @@ function RetailDrawer({ drawerId, isOpen, onClose, t, showFormat, onPrev, onNext
                 )}
               </div>
               <div className={`drawer-col ${drawerId === 'comm' ? 'drawer-col-comm-mid' : ''}`}>
-                <div className="dc-label">{labels.for}</div>
+                {drawerId !== 'comm' && <div className="dc-label">{labels.for}</div>}
                 <div dangerouslySetInnerHTML={{__html: t(`d_${drawerId}.f`)}}></div>
               </div>
               <div className={`drawer-col ${drawerId === 'comm' ? 'drawer-col-comm-right' : ''}`}>
-                <div className="dc-label">{labels.result}</div>
+                {drawerId !== 'comm' && <div className="dc-label">{labels.result}</div>}
                 <div dangerouslySetInnerHTML={{__html: t(`d_${drawerId}.r`)}}></div>
               </div>
             </div>
@@ -1091,7 +1095,7 @@ function App() {
     comm: {
       title: t('tc.comm.title'),
       button: t('tc.comm.button'),
-      photos: ['/n2_retail_commodities.png', '/n2_retail_commodities1.png'],
+      photos: ['/catalogo_retail_commodities1.png', '/catalogo_retail_commodities2.png'],
       columns: [t('tc.comm.col1'), t('tc.comm.col2'), t('tc.comm.col3'), t('tc.comm.col4')],
       rows: [
         ['Champiñón blanco', 'Film extensible y Termosellado', '200g · 250g · 300g · 400g · 500g', '7-10 días'],
@@ -1137,8 +1141,8 @@ function App() {
     },
     cultivo: {
       title: 'Ficha Foodservice: Commodities y Volumen',
-      button: 'Ficha Tecnica: Origen e Industria',
-      photos: ['/landing_retail_commodities.png', '/qs-espana.jpg'],
+      button: t('tc.cultivo.button'),
+      photos: ['/catalogo_retail_commodities1.png', '/catalogo_retail_commodities2.png'],
       columns: ['Referencia', 'Codigo', 'Formato', 'Detalle'],
       rows: [
         ['Champiñón base', 'Caja', '5kg', 'Servicio diario'],

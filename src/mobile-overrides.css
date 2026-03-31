@@ -703,6 +703,13 @@ gap: 4px !important;
   margin-bottom: 0 !important;
 }
 
+/* ── Oculta dc-label solo en comm ── */
+#drawer-comm .dc-label,
+.drawer .dc-label,
+[id^="drawer-"] .dc-label {
+  display: none !important;
+}
+
 /* ── Tarjetas Retail/Foodservice con fondo blanco completo ── */
 .sol-card,
 .fs-card-item,
