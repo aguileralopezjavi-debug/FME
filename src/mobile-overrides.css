@@ -109,18 +109,21 @@ html {
     backdrop-filter: none !important;
   }
 
-  .hero-h1 {
+  /* Especificidad #hero… vence reglas globales en index.css (#hero h1|p|span) */
+  #hero .hero-h1,
+  #hero .hero-h1 .hero-accent,
+  #hero .hero-p,
+  #hero .hero-p strong {
     color: #FFFFFF !important;
+  }
+
+  #hero .hero-h1,
+  #hero .hero-h1 .hero-accent {
     text-shadow: 0 2px 8px rgba(0,0,0,0.4) !important;
   }
 
-  .hero-accent {
-    color: #7ec832 !important;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
-  }
-
-  .hero-p {
-    color: rgba(255,255,255,0.92) !important;
+  #hero .hero-p,
+  #hero .hero-p strong {
     text-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
   }
 
