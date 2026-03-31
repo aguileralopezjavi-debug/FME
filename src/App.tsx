@@ -702,6 +702,10 @@ function RetailDrawer({ drawerId, isOpen, onClose, t, showFormat, onPrev, onNext
   };
 
   const handleCTAClick = () => {
+    if (drawerId === 'comm') {
+      window.open('/catalogo_commodities.html', '_blank', 'noopener,noreferrer');
+      return;
+    }
     if (drawerId === 'espec') {
       window.open('/calendario_disponibilidad.pdf', '_blank', 'noopener,noreferrer');
       return;
