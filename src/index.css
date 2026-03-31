@@ -71,7 +71,7 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);border
 .stat span{font-size:.66rem;color:rgba(255,255,255,.5);letter-spacing:.05em;text-transform:uppercase;margin-top:.25rem;max-width:110px}
 .stat-sep{width:1px;background:rgba(255,255,255,.1);align-self:stretch}
 
-.tabs-section{background:var(--white);padding:clamp(2rem,4vw,4rem) 0 clamp(2.5rem,5vw,5rem)}
+.tabs-section{background:var(--white);padding:clamp(0.5rem,1vw,1rem) 0 clamp(0.5rem,1vw,1rem)}
 .tabs-header{text-align:center;margin-bottom:1.75rem}
 .tabs-header h2{font-family:var(--head);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;letter-spacing:-.02em;color:#0F1A2A;margin-bottom:.4rem}
 .tabs-header p{color:#334155;font-size:.93rem}

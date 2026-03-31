@@ -178,9 +178,10 @@ html {
   }
 
   .tab-btns {
-    flex-direction: column !important;
+flex-direction: row !important;
     width: 100% !important;
-    gap: 0 !important;
+gap: 12px !important;
+padding: 4px 0 !important;
   }
 
   .tab-btn {
@@ -460,22 +461,13 @@ html {
 }
 
 /* ── Franja «¿Para qué canal compras?»: naranja suave, título/subtítulo/botones centrados ── */
-.tabs-section {
-  background: linear-gradient(180deg, #fff6ec 0%, #ffe8d2 45%, #fff0e0 100%) !important;
-  min-height: 280px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  padding-top: 28px !important;
-  padding-bottom: 28px !important;
-}
 
 .tabs-section .wrap {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 28px !important;
+gap: 8px !important;
   width: 100% !important;
   padding-left: clamp(0.6rem, 2.4vw, 1.15rem) !important;
   padding-right: clamp(0.6rem, 2.4vw, 1.15rem) !important;
@@ -495,8 +487,8 @@ html {
 }
 
 .tab-btns {
-  gap: 24px !important;
-  padding: 16px 0 !important;
+gap: 16px !important;
+padding: 8px 0 !important;
 }
 
 .tab-btn {
@@ -512,10 +504,8 @@ html {
   border-radius: 12px !important;
   overflow: hidden !important;
   background: #FFFFFF !important;
-  margin-top: clamp(1rem, 3.2vw, 2rem) !important;
-  --tab-panel-pad-y: clamp(1.25rem, 3.8vw, 2.35rem);
-  --tab-panel-pad-x: clamp(0.45rem, 1.65vw, 0.85rem);
-  padding: var(--tab-panel-pad-y) var(--tab-panel-pad-x) clamp(1rem, 2.5vw, 1.75rem) !important;
+margin-top: 8px !important;
+padding: 0 !important;
 }
 
 /* Franja superior Retail / Foodservice: fondo blanco, borde inferior fuerte + marco interior */
@@ -526,9 +516,9 @@ html {
   box-shadow:
     inset 0 0 0 1.5px rgba(27, 43, 69, 0.28),
     0 2px 0 0 rgba(27, 43, 69, 0.06) !important;
-  padding: 24px 32px !important;
+  padding: 8px 16px !important;
   margin-top: 0 !important;
-  margin-bottom: var(--tab-panel-pad-y, clamp(1.25rem, 3.8vw, 2.35rem)) !important;
+  margin-bottom: 0 !important;
   text-align: center !important;
   display: flex !important;
   flex-direction: column !important;
@@ -591,4 +581,27 @@ html {
 
 .tab-panels-wrap .sol-card .card-body {
   padding: 1.15rem 0.85rem !important;
+}
+
+.section-confirm {
+  padding: 8px 16px !important;
+  margin-bottom: 0 !important;
+}
+
+.section-confirm .sc-icon {
+  display: none !important;
+}
+
+.tabs-header {
+  margin-bottom: 8px !important;
+}
+
+.tab-btns {
+  margin-bottom: 8px !important;
+}
+
+.tabs-section {
+  background: #fff3e0 !important;
+  padding: 16px 0 !important;
+  min-height: 0 !important;
 }
