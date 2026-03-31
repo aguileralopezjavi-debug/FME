@@ -954,7 +954,7 @@ function App() {
   };
 
   const [lang, setLang] = useState<Language>(getInitialLanguage());
-  const [activeTab, setActiveTab] = useState<Tab>('retail');
+  const [activeTab, setActiveTab] = useState<Tab | null>(null);
   const [openDrawer, setOpenDrawer] = useState<string | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
   const [techModal, setTechModal] = useState<string | null>(null);
@@ -970,7 +970,7 @@ function App() {
   };
 
   const switchTab = (tab: Tab) => {
-    setActiveTab(tab);
+    setActiveTab(prev => prev === tab ? null : tab);
     setOpenDrawer(null);
 
     const scrollToSectionAligned = (sectionId: string) => {
@@ -1293,7 +1293,12 @@ function App() {
         </div>
       </section>
 
-      <section className="tabs-section" id="tabs">
+      <section className="tabs-section" id="tabs" onClick={(e) => {
+        const target = e.target as HTMLElement;
+        if (!target.closest('.tab-btn') && !target.closest('.tab-panels-wrap')) {
+          setActiveTab(null);
+        }
+      }}>
         <div className="wrap">
           <div className="tabs-header">
             <h2>{t('gate.h2')}</h2>

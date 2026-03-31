@@ -292,3 +292,211 @@ html {
     font-size: 1.35rem !important;
   }
 }
+
+/* ── Fondos de sección ── */
+.qs-section {
+  background: #f4f9ee !important;
+}
+
+/* ── Botones tab centrados y estilo franja datos ── */
+.tab-btns {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.tab-btn {
+  background: #1B2B45 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #1B2B45 !important;
+  border-radius: 8px !important;
+  padding: 16px 32px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+}
+
+.tab-btn .tlm,
+.tab-btn .tab-main,
+.tab-btn span:first-child,
+.tab-btn > span:not(.tls) {
+  color: #FFFFFF !important;
+  font-size: clamp(15px, 2vw, 18px) !important;
+  font-weight: 800 !important;
+  display: block !important;
+}
+
+.tab-btn:hover {
+  background: #2c4268 !important;
+  border-color: #2c4268 !important;
+}
+
+.tab-btn.active {
+  background: #3d6b1a !important;
+  border-color: #3d6b1a !important;
+  color: #FFFFFF !important;
+}
+
+.tab-btn.active .tls {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+.tab-btn.active .tlm,
+.tab-btn.active span:first-child,
+.tab-btn.active > span:not(.tls) {
+  color: #FFFFFF !important;
+}
+
+.tab-btn .tls {
+  color: rgba(255,255,255,0.9) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Iconos Retail / Foodservice en botones tab */
+.tab-btn .te {
+  font-size: clamp(1.85rem, 5.5vw, 2.65rem) !important;
+  line-height: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.tab-panels-wrap:empty {
+  display: none !important;
+}
+
+/* ── Franja «¿Para qué canal compras?»: naranja suave, título/subtítulo/botones centrados ── */
+.tabs-section {
+  background: linear-gradient(180deg, #fff6ec 0%, #ffe8d2 45%, #fff0e0 100%) !important;
+  min-height: 280px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
+}
+
+.tabs-section .wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 28px !important;
+  width: 100% !important;
+  padding-left: clamp(0.6rem, 2.4vw, 1.15rem) !important;
+  padding-right: clamp(0.6rem, 2.4vw, 1.15rem) !important;
+}
+
+.tabs-section .tabs-header {
+  width: 100% !important;
+  max-width: 42rem !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.tabs-section .tabs-header h2,
+.tabs-section .tabs-header p {
+  text-align: center !important;
+  margin-inline: auto !important;
+}
+
+.tab-btns {
+  gap: 24px !important;
+  padding: 16px 0 !important;
+}
+
+.tab-btn {
+  min-width: 260px !important;
+  min-height: 80px !important;
+  padding: 20px 36px !important;
+}
+
+/* ── Paneles: recuadro más abajo; cabecera centrada entre borde superior y las 4 opciones ── */
+.tab-panels-wrap:not(:empty) {
+  width: 100% !important;
+  border: 2.5px solid #1B2B45 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: #FFFFFF !important;
+  margin-top: clamp(1rem, 3.2vw, 2rem) !important;
+  --tab-panel-pad-y: clamp(1.25rem, 3.8vw, 2.35rem);
+  --tab-panel-pad-x: clamp(0.45rem, 1.65vw, 0.85rem);
+  padding: var(--tab-panel-pad-y) var(--tab-panel-pad-x) clamp(1rem, 2.5vw, 1.75rem) !important;
+}
+
+/* Franja superior Retail / Foodservice: fondo blanco, borde inferior fuerte + marco interior */
+.tab-panels-wrap .section-confirm {
+  background: #FFFFFF !important;
+  border: none !important;
+  border-bottom: 4px solid #1b2b45 !important;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(27, 43, 69, 0.28),
+    0 2px 0 0 rgba(27, 43, 69, 0.06) !important;
+  padding: 24px 32px !important;
+  margin-top: 0 !important;
+  margin-bottom: var(--tab-panel-pad-y, clamp(1.25rem, 3.8vw, 2.35rem)) !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.75rem !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.tab-panels-wrap .section-confirm .sc-icon {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.tab-panels-wrap .section-confirm h2 {
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.tab-panels-wrap .section-confirm p {
+  text-align: center !important;
+  max-width: 40rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.tab-panels-wrap .section-confirm .foodservice-segments {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 40rem !important;
+}
+
+.tab-panels-wrap .section-confirm .foodservice-segments-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.15rem 0.35rem !important;
+}
+
+.sol-card,
+.fs-card-item,
+.solution-grid > div,
+.fs-grid > div {
+  background: #FFFFFF !important;
+  border: 2px solid #1B2B45 !important;
+  border-radius: 8px !important;
+}
+
+.solution-grid,
+.fs-grid {
+  padding: 12px var(--tab-panel-pad-x, clamp(0.45rem, 1.65vw, 0.85rem)) 14px !important;
+  gap: 10px !important;
+  background: #FFFFFF !important;
+}
+
+.tab-panels-wrap .sol-card .card-body {
+  padding: 1.15rem 0.85rem !important;
+}
