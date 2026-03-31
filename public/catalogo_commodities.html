@@ -81,20 +81,62 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 /* 8-card grid: 4 cols × 2 rows */
 .sku-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:.5rem;padding:.5rem 1rem;flex:1;min-height:0;overflow:hidden;}
 @media(max-width:700px){
-  .sku-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,1fr);gap:.35rem;padding:.35rem .5rem;overflow:hidden;}
-  .sku-card{cursor:pointer;flex:1;min-height:0;display:flex;flex-direction:column;}
-  .sku-card:active{transform:scale(.97);transition:transform .1s;}
-  .sku-img{flex:0 0 38%;overflow:hidden;}
+  /* ── HEADER: compact ── */
+  .ph{padding:.3rem .8rem .25rem;}
+  .sec-badge{padding:.18rem .6rem;font-size:.58rem;}
+  .ph-title{font-size:1rem;}
+  .ph-desc{font-size:.62rem;}
+
+  /* ── GRID: 2 cols × 4 rows, fills available space ── */
+  .sku-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:repeat(4,1fr);
+    gap:.3rem;
+    padding:.3rem .4rem;
+    overflow:hidden;
+  }
+
+  /* ── CARD: horizontal layout (img left, info right) ── */
+  .sku-card{
+    flex-direction:row !important;
+    cursor:pointer;
+    min-height:0;
+    overflow:hidden;
+  }
+  .sku-card:active{opacity:.85;}
+
+  /* ── IMAGE: fixed left column ── */
+  .sku-img{
+    flex:0 0 42% !important;
+    height:auto !important;
+    overflow:hidden;
+  }
   .sku-img img{width:100%;height:100%;object-fit:cover;}
-  .sku-body{display:flex !important;padding:.28rem .4rem .32rem;gap:.12rem;}
+
+  /* ── BODY: right column, all fields ── */
+  .sku-body{
+    display:flex !important;
+    flex-direction:column;
+    padding:.25rem .3rem .25rem .3rem !important;
+    gap:.06rem !important;
+    flex:1;
+    min-width:0;
+    overflow:hidden;
+    justify-content:center;
+  }
+
+  /* ── HIDE: sci name, description, divider ── */
   .sku-sci{display:none !important;}
   .sku-desc{display:none !important;}
-  .sku-name{font-size:.72rem;line-height:1.1;}
-  .sku-div{margin:.08rem 0;}
-  .sku-fields{gap:.06rem;}
-  .sku-row{font-size:.56rem;line-height:1.2;gap:.25rem;}
-  .si{font-size:.56rem;}
+  .sku-div{display:none !important;}
   .mob-footer{display:none !important;}
+
+  /* ── TEXT SIZES ── */
+  .sku-name{font-size:.65rem !important;line-height:1.15;margin-bottom:.08rem;}
+  .sku-fields{gap:.04rem !important;}
+  .sku-row{font-size:.52rem !important;line-height:1.2;gap:.2rem;}
+  .si{font-size:.52rem !important;}
+  .sl{font-weight:600;}
 }
 
 .sku-card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);display:flex;flex-direction:column;border:1px solid var(--bord);min-height:0;}
