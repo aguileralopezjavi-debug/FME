@@ -126,11 +126,16 @@ html {
 
   .hero-content {
     max-width: 100% !important;
-    padding: 0 12px !important;
+    width: 100% !important;
+    padding: 0 20px !important;
+    background: transparent !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .hero-content::before {
-    inset: -40px -24px !important;
+    display: none !important;
+    background: transparent !important;
   }
 
   .hero-h1 {
