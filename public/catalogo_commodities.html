@@ -38,11 +38,12 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 .lp-btn:hover,.lp-btn.active{background:rgba(255,255,255,.2);color:white;border-color:rgba(255,255,255,.4);}
 
 /* ── SCROLL ── */
-#scroll{position:fixed;inset:0;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;display:none;}
+#scroll{position:fixed;inset:0;top:0;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;display:none;scrollbar-width:none;-ms-overflow-style:none;}
 #scroll.on{display:block;}
+#scroll::-webkit-scrollbar{display:none;}
 
 /* ── PAGES ── */
-.page{width:100vw;height:100vh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;}
+.page{width:100vw;height:100vh;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;}
 
 /* ── SIDE DOTS ── */
 #dots{position:fixed;right:.7rem;top:50%;transform:translateY(-50%);z-index:300;display:none;flex-direction:column;gap:.5rem;}
@@ -68,7 +69,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 .cbadge{border:1px solid rgba(255,255,255,.2);border-radius:1rem;padding:.22rem .6rem;color:rgba(255,255,255,.45);font-size:.62rem;font-weight:700;}
 
 /* ── PRODUCT PAGE ── */
-.page-prod{background:var(--cream);display:flex;flex-direction:column;padding-top:var(--topbar);}
+.page-prod{background:var(--cream);display:flex;flex-direction:column;padding-top:var(--topbar);height:100vh;height:100dvh;}
 .ph{padding:.7rem 1.2rem .6rem;border-bottom:2px solid var(--bord);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
 .ph-left{display:flex;flex-direction:column;gap:.2rem;align-items:center;text-align:center;}
 .sec-badge{display:inline-flex;align-items:center;gap:.4rem;border-radius:2rem;padding:.25rem .75rem;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
@@ -78,15 +79,17 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 
 
 /* 8-card grid: 4 cols × 2 rows */
-.sku-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:.5rem;padding:.5rem 1rem;flex:1;min-height:0;}
+.sku-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:.5rem;padding:.5rem 1rem;flex:1;min-height:0;overflow:hidden;}
 @media(max-width:700px){
-  .sku-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,auto);gap:.4rem;padding:.4rem .6rem;overflow-y:auto;}
-  .sku-img{flex:0 0 auto;height:130px;}
+  .sku-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,1fr);gap:.35rem;padding:.35rem .5rem;overflow:hidden;}
+  .sku-img{flex:0 0 55%;overflow:hidden;}
+  .sku-img img{width:100%;height:100%;object-fit:cover;}
   .sku-body{display:none !important;}
-  .sku-sci{display:none !important;}
-  .sku-card .mob-footer{display:flex;}
-  .sku-card{cursor:pointer;}
+  .sku-card .mob-footer{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;padding:.3rem .45rem .35rem;}
+  .sku-card{cursor:pointer;flex:1;min-height:0;}
   .sku-card:active{transform:scale(.97);transition:transform .1s;}
+  .mob-name{font-size:.75rem;}
+  .mob-origin{font-size:.64rem;}
 }
 
 .sku-card{background:white;border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);display:flex;flex-direction:column;border:1px solid var(--bord);min-height:0;}
@@ -110,7 +113,8 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 .sv{color:var(--mid);}
 
 .mob-footer{display:none;align-items:center;justify-content:center;padding:.3rem .5rem .4rem;flex-shrink:0;border-top:1px solid var(--bord);}
-.mob-name{font-family:'Playfair Display',serif;font-weight:700;font-size:.82rem;color:var(--text);line-height:1.1;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mob-name{font-family:'Playfair Display',serif;font-weight:700;font-size:.82rem;color:var(--text);line-height:1.1;}
+.mob-origin{font-size:.7rem;color:var(--mid);margin-top:.1rem;}
 .mob-btn{display:none;}
 /* MODAL */
 #modal{position:fixed;inset:0;z-index:500;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);}
@@ -134,7 +138,7 @@ html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;backgroun
 
 
 /* ── CLOSING ── */
-.page-close{background:linear-gradient(160deg,#1a3448 0%,#0f1e2c 60%,#0a1520 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:var(--topbar);}
+.page-close{background:linear-gradient(160deg,#1a3448 0%,#0f1e2c 60%,#0a1520 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:var(--topbar);height:100vh;height:100dvh;}
 .cl-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.4rem;width:100%;max-width:560px;padding:1.5rem;}
 .cl-sub{font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.15em;text-transform:uppercase;}
 .cl-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,2.4rem);font-weight:900;color:white;line-height:1.1;}
@@ -370,14 +374,20 @@ const T = {
     lOr:"Herkomst",lPk:"Verpakking",lFm:"Formaten",lCo:"Markten",lSh:"THT"}
 };
 
-/* ═══ RENDER ═══ */
+/* ═══ STATE ═══ */
+let LANG = 'es';
+
+/* ═══ RENDER GRID ═══ */
 function renderGrid(id, prods, color, lang) {
-  const t = T[lang], nc = color==='g'?'ng':'nb';
-  document.getElementById(id).innerHTML = prods.map(p => {
+  const t = T[lang];
+  const nc = color==='g' ? 'ng' : 'nb';
+  const list = prods;
+  document.getElementById(id).innerHTML = list.map((p, rawIdx) => {
     if (!p) return '<div class="sku-card empty"></div>';
-    const btnCls = color==='g' ? '' : ' blue';
-    const dataIdx = color==='g' ? `data-group="c" data-idx="${PRODS.cultivo.filter(x=>x).indexOf(p)}"` : `data-group="i" data-idx="${PRODS.imports.filter(x=>x).indexOf(p)}"`;
-    return `<div class="sku-card" ${dataIdx}>
+    // real index among non-null items
+    const realIdx = list.slice(0, rawIdx + 1).filter(x=>x).length - 1;
+    const grp = color==='g' ? 'c' : 'i';
+    return `<div class="sku-card" data-group="${grp}" data-idx="${realIdx}" style="cursor:pointer">
       <div class="sku-img"><img src="${p.img}" alt="${p.names[lang]}" loading="lazy"></div>
       <div class="sku-body">
         <div class="sku-name ${nc}">${p.names[lang]}</div>
@@ -393,24 +403,31 @@ function renderGrid(id, prods, color, lang) {
       </div>
       <div class="mob-footer">
         <div class="mob-name ${nc}">${p.names[lang]}</div>
+        <div class="mob-origin">${p.origins[lang]}</div>
       </div>
     </div>`;
   }).join('');
 }
 
+/* ═══ APPLY LANGUAGE ═══ */
 function applyLang(lang) {
+  LANG = lang;
   const t = T[lang];
+  // Cover
   document.getElementById('cv-title').innerHTML  = t.cvTitle;
   document.getElementById('cv-sub').innerHTML    = t.cvSub;
   document.getElementById('cv-year').textContent = t.cvYear;
+  // Page headers
   document.getElementById('p1-badge').innerHTML  = t.p1Badge;
   document.getElementById('p1-title').textContent= t.p1Title;
   document.getElementById('p1-desc').textContent = t.p1Desc;
   document.getElementById('p2-badge').innerHTML  = t.p2Badge;
   document.getElementById('p2-title').textContent= t.p2Title;
   document.getElementById('p2-desc').textContent = t.p2Desc;
+  // Grids
   renderGrid('grid-c', PRODS.cultivo, 'g', lang);
   renderGrid('grid-i', PRODS.imports, 'b', lang);
+  // Closing
   document.getElementById('cl-sub').textContent  = t.clSub;
   document.getElementById('cl-title').innerHTML  = t.clTitle;
   document.getElementById('cl-c').textContent    = t.clC;
@@ -420,72 +437,72 @@ function applyLang(lang) {
   document.getElementById('cl-em').textContent   = t.clEm;
   document.getElementById('cl-ad').textContent   = t.clAd;
   document.getElementById('cl-tag').textContent  = t.clTag;
-  document.querySelectorAll('.lp-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  // Lang picker active state
+  document.querySelectorAll('.lp-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang));
 }
 
 /* ═══ LANG PICKER ═══ */
 const lpEl = document.getElementById('lp');
-[{c:'es',f:'🇪🇸'},{c:'en',f:'🇬🇧'},{c:'fr',f:'🇫🇷'},{c:'nl',f:'🇳🇱'}].forEach(l=>{
-  const b=document.createElement('button');
-  b.className='lp-btn';b.dataset.lang=l.c;
-  b.textContent=l.f+' '+l.c.toUpperCase();
-  b.addEventListener('click',()=>applyLang(l.c));
+[{c:'es',f:'🇪🇸'},{c:'en',f:'🇬🇧'},{c:'fr',f:'🇫🇷'},{c:'nl',f:'🇳🇱'}].forEach(l => {
+  const b = document.createElement('button');
+  b.className = 'lp-btn'; b.dataset.lang = l.c;
+  b.textContent = l.f + ' ' + l.c.toUpperCase();
+  b.addEventListener('click', () => applyLang(l.c));
   lpEl.appendChild(b);
 });
 
 /* ═══ SPLASH ═══ */
-document.querySelectorAll('.lang-btn[data-lang]').forEach(btn=>{
-  btn.addEventListener('click',function(){
-    const lang=this.dataset.lang;
+document.querySelectorAll('.lang-btn[data-lang]').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const lang = this.dataset.lang;
     applyLang(lang);
-    const sp=document.getElementById('splash');
+    const sp = document.getElementById('splash');
     sp.classList.add('gone');
-    setTimeout(()=>sp.style.display='none',650);
+    setTimeout(() => { sp.style.display = 'none'; }, 650);
     document.getElementById('topbar').classList.add('on');
     document.getElementById('dots').classList.add('on');
     document.getElementById('scroll').classList.add('on');
   });
 });
 
-/* ═══ DOTS ═══ */
-const pages=document.querySelectorAll('.page[data-page]');
-const dotsEl=document.getElementById('dots');
-pages.forEach((p,i)=>{
-  const d=document.createElement('button');
-  d.className='sd'+(i===0?' active':'');
-  d.addEventListener('click',()=>p.scrollIntoView({behavior:'smooth'}));
+/* ═══ SCROLL DOTS ═══ */
+const pages = document.querySelectorAll('.page[data-page]');
+const dotsEl = document.getElementById('dots');
+pages.forEach((p, i) => {
+  const d = document.createElement('button');
+  d.className = 'sd' + (i===0 ? ' active' : '');
+  d.addEventListener('click', () => p.scrollIntoView({behavior:'smooth'}));
   dotsEl.appendChild(d);
 });
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const idx=parseInt(e.target.dataset.page);
-      document.querySelectorAll('.sd').forEach((d,i)=>d.classList.toggle('active',i===idx));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = parseInt(e.target.dataset.page);
+      document.querySelectorAll('.sd').forEach((d,i) => d.classList.toggle('active', i===idx));
     }
   });
-},{threshold:0.5,root:document.getElementById('scroll')});
-pages.forEach(p=>obs.observe(p));
+}, {threshold: 0.5, root: document.getElementById('scroll')});
+pages.forEach(p => obs.observe(p));
 
 /* ═══ MODAL ═══ */
-let _currentLang = 'es';
-
-function openModal(group, idx) {
-  const t = T[_currentLang];
-  const list = group==='c' ? PRODS.cultivo.filter(x=>x) : PRODS.imports.filter(x=>x);
-  const p = list[idx];
+function openModal(group, realIdx) {
+  const t = T[LANG];
+  const list = (group === 'c' ? PRODS.cultivo : PRODS.imports).filter(x => x);
+  const p = list[realIdx];
   if (!p) return;
-  const nc = group==='c' ? 'ng' : 'nb';
+  const nc = group === 'c' ? 'ng' : 'nb';
   document.getElementById('modal-img').src = p.img;
-  document.getElementById('modal-img').alt = p.names[_currentLang];
+  document.getElementById('modal-img').alt = p.names[LANG];
   document.getElementById('modal-name').className = nc;
-  document.getElementById('modal-name').textContent = p.names[_currentLang];
+  document.getElementById('modal-name').textContent = p.names[LANG];
   document.getElementById('modal-sci').textContent = p.sci;
   document.getElementById('modal-fields').innerHTML =
-    `<div class="modal-row"><span class="modal-si">🚩</span><span class="modal-sl">${t.lOr}:</span><span class="modal-sv">${p.origins[_currentLang]}</span></div>
-     <div class="modal-row"><span class="modal-si">📦</span><span class="modal-sl">${t.lPk}:</span><span class="modal-sv">${p.pack[_currentLang]}</span></div>
+    `<div class="modal-row"><span class="modal-si">🚩</span><span class="modal-sl">${t.lOr}:</span><span class="modal-sv">${p.origins[LANG]}</span></div>
+     <div class="modal-row"><span class="modal-si">📦</span><span class="modal-sl">${t.lPk}:</span><span class="modal-sv">${p.pack[LANG]}</span></div>
      <div class="modal-row"><span class="modal-si">⚖</span><span class="modal-sl">${t.lFm}:</span><span class="modal-sv">${p.fmt}</span></div>
      <div class="modal-row"><span class="modal-si">🌍</span><span class="modal-sl">${t.lCo}:</span><span class="modal-sv">${p.countries}</span></div>
-     <div class="modal-row"><span class="modal-si">⏱</span><span class="modal-sl">${t.lSh}:</span><span class="modal-sv">${p.shelf[_currentLang]}</span></div>`;
+     <div class="modal-row"><span class="modal-si">⏱</span><span class="modal-sl">${t.lSh}:</span><span class="modal-sv">${p.shelf[LANG]}</span></div>`;
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -495,30 +512,24 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// Wrap applyLang to track language
-const _origApply = applyLang;
-window.applyLang = function(lang) { _currentLang = lang; _origApply(lang); };
-
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// Tap card to open modal (mobile: always; desktop: only if sku-body hidden)
+/* Card tap → modal (works on any screen size when body is hidden) */
 document.getElementById('scroll').addEventListener('click', function(e) {
   const card = e.target.closest('.sku-card[data-group]');
   if (!card) return;
-  // On desktop, only open if body is not visible (shouldn't happen, but safe)
   const body = card.querySelector('.sku-body');
-  if (body && getComputedStyle(body).display !== 'none') return;
+  if (body && getComputedStyle(body).display !== 'none') return; // desktop: don't intercept
   openModal(card.dataset.group, parseInt(card.dataset.idx));
 });
 
 /* ═══ INIT ═══ */
 applyLang('es');
+
 </script>
 
 <!-- MODAL -->
