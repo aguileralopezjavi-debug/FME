@@ -500,7 +500,7 @@ padding: 8px 0 !important;
 /* ── Paneles: recuadro más abajo; cabecera centrada entre borde superior y las 4 opciones ── */
 .tab-panels-wrap:not(:empty) {
   width: 100% !important;
-  border: 2.5px solid #1B2B45 !important;
+border: none !important;
   border-radius: 12px !important;
   overflow: hidden !important;
   background: #FFFFFF !important;
@@ -620,4 +620,94 @@ gap: 4px !important;
 .foodservice-segments {
   margin: 0 !important;
   padding: 4px 8px !important;
+}
+
+/* ── Elimina bordes cabecera y contenedor principal ── */
+.tab-panels-wrap {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.tab-panels-wrap .section-confirm {
+  border: none !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+/* ── Fondo naranja en cabecera del módulo ── */
+.tab-panels-wrap {
+  background: #fff3e0 !important;
+  padding: 0 0 16px 0 !important;
+}
+
+.tab-panels-wrap .section-confirm {
+  background: #fff3e0 !important;
+}
+
+.solution-grid,
+.fs-grid {
+  background: #fff3e0 !important;
+  padding: 16px !important;
+  gap: 16px !important;
+}
+
+.tab-panel {
+  background: #fff3e0 !important;
+}
+
+.foodservice-segments {
+  display: none !important;
+}
+
+.foodservice-segments-label,
+.foodservice-segments-list,
+.foodservice-hero-sectors,
+[class*="foodservice-seg"] {
+  display: none !important;
+}
+
+.section-confirm .foodservice-segments,
+.section-confirm [class*="segment"] {
+  display: none !important;
+}
+
+.tab-panels-wrap .section-confirm {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.solution-grid,
+.fs-grid {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ── Retail: espacio entre cabecera y cards ── */
+.tab-panels-wrap .section-confirm {
+  padding-bottom: 24px !important;
+}
+
+/* ── Elimina franja blanca inferior ── */
+.tab-panels-wrap {
+  padding-bottom: 0 !important;
+}
+
+.tab-panel {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.solution-grid,
+.fs-grid {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── Tarjetas Retail/Foodservice con fondo blanco completo ── */
+.sol-card,
+.fs-card-item,
+.solution-grid > div,
+.fs-grid > div,
+.tab-panels-wrap .sol-card .card-body {
+  background: #FFFFFF !important;
 }

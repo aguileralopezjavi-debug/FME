@@ -866,6 +866,10 @@ function FoodserviceDrawer({ drawerId, isOpen, onClose, t, onPrev, onNext, canPr
   if (!isOpen) return null;
 
   const handleCatalogClick = () => {
+    if (drawerId === 'cultivo') {
+      window.open('/catalogo_commodities.html', '_blank', 'noopener,noreferrer');
+      return;
+    }
     if (onOpenCatalog) {
       onOpenCatalog(drawerId);
       return;
@@ -1393,18 +1397,6 @@ function App() {
                     <em>{t('fs.hero.em')}</em> <span>{t('fs.hero.span')}</span>
                   </h2>
                   <p className="foodservice-hero-subtitle">{t('pc.fs.p')}</p>
-                  <div className="foodservice-segments" aria-label={t('fs.segments')}>
-                    <span className="foodservice-segments-label">{t('fs.segments')}</span>
-                    <span className="foodservice-segments-list">
-                      <span>{t('fs.segment.dist')}</span>
-                      <span className="foodservice-seg-sep" aria-hidden> | </span>
-                      <span>{t('fs.segment.rest')}</span>
-                      <span className="foodservice-seg-sep" aria-hidden> | </span>
-                      <span>{t('fs.segment.mc')}</span>
-                      <span className="foodservice-seg-sep" aria-hidden> | </span>
-                      <span>{t('fs.segment.ind')}</span>
-                    </span>
-                  </div>
                 </div>
 
                 <div className="fs-grid">

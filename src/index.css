@@ -116,7 +116,7 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);border
 .tls{font-size:.67rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mid);transition:var(--t)}
 
 .tab-panels-wrap{
-  border:1.5px solid var(--border);
+  border:none;
   border-radius:0 12px 12px 12px;
   background:var(--white);
   padding:2.25rem clamp(1.25rem,3vw,2.5rem) 2.5rem;
@@ -132,7 +132,7 @@ header{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.97);border
   padding:2.5rem 2rem 2rem;
   margin-bottom:2.5rem;
   background:linear-gradient(135deg, var(--gxlt) 0%, #fff 60%);
-  border:1px solid var(--glt);
+  border:none;
   border-radius:14px;
 }
 .section-confirm .sc-icon{font-size:2.5rem;display:block;margin-bottom:.65rem}
